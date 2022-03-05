@@ -6,12 +6,19 @@ import { ColorContext } from '../../../store/color-context';
 
 const Settings = () => {
     const [textColor, setTextColor] = useContext(ColorContext)
+    const [theme, setTheme] = useContext(ColorContext);
 
     const style = {color: textColor, transition:'200ms linear'}
 
     const textColorHandler = (color) => {
         setTextColor(color)
     }
+
+    const setThemeHandler = () => {
+        console.log('changing theme')
+        theme === '#393939' ? setTheme('#D0D0D0') : setTheme('#393939') 
+    }
+
 
     return <div className={classes.flex_column} style={{ height: '94vh' }}>
         <div className={classes.flex_column1}>
@@ -26,6 +33,11 @@ const Settings = () => {
                 <button style={{ backgroundColor: '#FFFFFF' }} onClick={()=> textColorHandler('#FFFFFF')}></button>
             </div>
             <h2 style={style}>Change your theme</h2>
+            <div className={classes.themeToggle} onClick={setThemeHandler}>
+                <p>dark</p>
+                <p>light</p>
+                <div className={theme === '#393939' ? classes.lightModeBlock : classes.darkModeBlock }></div>
+            </div>
         </div>
         <div className={classes.logoutButtons}>
             <button>Logout</button>

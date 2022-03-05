@@ -57,3 +57,45 @@
     border: rgba(255, 0, 0, 0.452) 3px solid;
     cursor: pointer;
 }
+
+.themeToggle {
+    display: flex;
+    position: relative;
+    color: white;
+    border: black 3px solid;
+    width: 200px;
+    padding:5px;
+    border-radius: 4px;
+    justify-content: space-around;
+}
+
+.themeToggle p {
+    font-size: 20px;
+    z-index: 2;
+}
+
+.themeToggle:hover {
+    cursor: pointer;
+}
+
+.darkModeBlock {
+    position: absolute;
+    width: 100px;
+    height: 24px;
+    background-color: black;
+    border-radius: 4px;
+    left: 7px;
+    top: 3px;
+    transition: 300ms linear;
+}
+
+.lightModeBlock {
+    position: absolute;
+    width: 100px;
+    height: 24px;
+    background-color: black;
+    border-radius: 4px;
+    left: 104px;
+    top: 3px;
+    transition: 300ms linear;
+}
