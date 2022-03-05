@@ -1,21 +1,30 @@
 import react from 'react';
 
-// import classes from './Home.module.css'
+import classes from './Home.module.css'
 
-// import News from './news/News';
-// import Quote from './news/Quote';
-// import Weather from './news/Quote';
-// import Tasks from './news/Quote';
-// import Calendar from './news/Quote';
+import News from './news/News';
+import Quote from './quote/Quote';
+import Weather from './weather/Weather';
+import Tasks from './tasks/Tasks';
+import Calendar from './calendar/Calendar';
 
 const Home = () => {
-    return <div>
-        <h1>Good Morning, Michael</h1>
-        {/* <News />
-        <Quote />
-        <Weather />
-        <Tasks />
-        <Calendar /> */}
+
+    return <div className={classes.flex} style={{ height: '94vh', padding:'3vh' }}>
+        <div className={`${classes.flex_column} ${classes.column1}`}>
+            <h1>Good Morning, Michael</h1>
+            <div className={classes.flex}>
+                <div className={classes.flex_column} style={{width: '50%'}}>
+                    <News />
+                    <Weather />
+                </div>
+                <div className={classes.flex_column} style={{width: '50%'}}>
+                    <Quote />
+                    <Tasks />
+                </div>
+            </div>
+        </div>
+        <Calendar />
     </div>
 };
 

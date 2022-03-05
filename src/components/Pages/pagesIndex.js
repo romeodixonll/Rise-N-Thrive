@@ -7,10 +7,8 @@ import Settings from './settings/Settings';
 import { useEffect } from 'react';
 
 const Pages = ({ currentPage }) => {
-  // console.log(currentPage)
-  const renderPage = (currentPage) => {
-  console.log('test', currentPage)
 
+  const renderPage = (currentPage) => {
     if (currentPage === 'Home') {
       return <Home />;
     };
@@ -26,12 +24,9 @@ const Pages = ({ currentPage }) => {
     if (currentPage === 'Settings') {
       return <Settings />;
     };
-
   };
 
-
-
-return <div>
+return <div style={{flexGrow:'1'}}>
   {renderPage(currentPage)}
 </div>
 }
