@@ -1,0 +1,5 @@
+.flex {
+    display: flex;
+    padding: 3vh;
+    gap: 3vh;
+}

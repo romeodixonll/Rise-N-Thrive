@@ -10,6 +10,16 @@
     align-self: center;
 }
 
+.ul li {
+    padding: 5px;
+    border-radius: 10px;
+    transition: 100ms linear;
+}
+
+.ul li a {
+    transition:100ms linear;
+}
+
 .flex {
     display: flex;
     align-items: center;

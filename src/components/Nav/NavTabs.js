@@ -5,68 +5,82 @@ import algoBlack from '../../assets/images/nav-images/algorithm-black.png';
 import gameBlack from '../../assets/images/nav-images/game-black.png';
 import stockBlack from '../../assets/images/nav-images/crypto-black.png';
 import settingBlack from '../../assets/images/nav-images/settings-black.png';
+import homeWhite from '../../assets/images/nav-images/home-white.png';
+import algoWhite from '../../assets/images/nav-images/algorithm-white.png';
+import gameWhite from '../../assets/images/nav-images/game-white.png';
+import stockWhite from '../../assets/images/nav-images/crypto-white.png';
+import settingWhite from '../../assets/images/nav-images/settings-white.png';
+import homeGrey from '../../assets/images/nav-images/home-grey.png';
+import algoGrey from '../../assets/images/nav-images/algorithm-grey.png';
+import gameGrey from '../../assets/images/nav-images/game-grey.png';
+import stockGrey from '../../assets/images/nav-images/crypto-grey.png';
+import settingGrey from '../../assets/images/nav-images/settings-grey.png';
 
 import classes from './NavTabs.module.css'
 
 const NavTabs = ({currentPage, handlePageChange}) => {
+    let noStyle = {color:'white', backgroundColor:'transparent'}
+    let activeAnchorBackground = {backgroundColor:'#232323'};
+    let activeAnchorColor = {color:'#6978FF'}
+
     return (
         <ul className={classes.ul}>
-            <li>
+            <li style={currentPage === 'Home' ? activeAnchorBackground : noStyle}>
                 <a
                     href="#home"
-                    onClick={() => handlePageChange('Home')}
-                    className={currentPage === 'Home' ? 'nav-link active' : 'nav-link'}
+                    onClick={() => handlePageChange('Home')} 
+                    style={currentPage === 'Home' ? activeAnchorColor : noStyle}
                 >
                     <div className={classes.flex}>
-                        <img className={classes.logo} src={homeBlack} alt="home logo"/>
+                        <img className={classes.logo} src={homeGrey} alt="home logo"/>
                         <p>Home</p>
                     </div>
                 </a>
             </li>
-            <li>
+            <li style={currentPage === 'Algorithm' ? activeAnchorBackground : noStyle}>
                 <a
                     href="#algorithm"
                     onClick={() => handlePageChange('Algorithm')}
-                    className={currentPage === 'Algorithm' ? 'nav-link active' : 'nav-link'}
+                    style={currentPage === 'Algorithm' ? activeAnchorColor : noStyle}
                 >
                     <div className={classes.flex}>
-                        <img  className={classes.logo} src={algoBlack} alt="algo logo"/>
+                        <img  className={classes.logo} src={algoGrey} alt="algo logo"/>
                         <p>Algorithm</p>
                     </div>
                 </a>
             </li>
-            <li>
+            <li style={currentPage === 'Game' ? activeAnchorBackground : noStyle}>
                 <a
                     href="#game"
                     onClick={() => handlePageChange('Game')}
-                    className={currentPage === 'Game' ? 'nav-link active' : 'nav-link'}
+                    style={currentPage === 'Game' ? activeAnchorColor : noStyle}
                 >
                     <div className={classes.flex}>
-                        <img  className={classes.logo} src={gameBlack} alt="game logo"/>
+                        <img  className={classes.logo} src={gameGrey} alt="game logo"/>
                         <p>Game</p>
                     </div>
                 </a>
             </li>
-            <li>
+            <li style={currentPage === 'Stocks' ? activeAnchorBackground : noStyle}>
                 <a
                     href="#stocks"
                     onClick={() => handlePageChange('Stocks')}
-                    className={currentPage === 'Stocks' ? 'nav-link active' : 'nav-link'}
+                    style={currentPage === 'Stocks' ? activeAnchorColor : noStyle}
                 >
                     <div className={classes.flex}>
-                        <img  className={classes.logo} src={stockBlack} alt="crypto logo"/>
+                        <img  className={classes.logo} src={stockGrey} alt="crypto logo"/>
                         <p>Stocks</p>
                     </div>
                 </a>
             </li>
-            <li>
+            <li style={currentPage === 'Settings' ? activeAnchorBackground : noStyle}>
                 <a
                     href="#settings"
                     onClick={() => handlePageChange('Settings')}
-                    className={currentPage === 'Settings' ? 'nav-link active' : 'nav-link'}
+                    style={currentPage === 'Settings' ? activeAnchorColor : noStyle}
                 >
                     <div className={classes.flex}>
-                        <img className={classes.logo} src={settingBlack} alt="settings logo"/>
+                        <img className={classes.logo} src={settingGrey} alt="settings logo"/>
                         <p>Settings</p>
                     </div>
                 </a>
