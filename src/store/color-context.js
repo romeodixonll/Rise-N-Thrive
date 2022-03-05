@@ -9,6 +9,7 @@ const ColorContextProvider = (props) => {
     const [textColor, setTextColor] = useState('#6978FF');
     const [theme, setTheme] = useState('#393939');
     console.log('theme', theme)
+    console.log('textColor', textColor)
 
     return (
         <ColorContext.Provider value={[textColor, setTextColor, theme, setTheme]}>

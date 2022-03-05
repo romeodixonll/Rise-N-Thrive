@@ -9,7 +9,7 @@ import Nav from './components/Nav/NavTabs'
 import { ColorContext } from './store/color-context';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('Settings');
+  const [currentPage, setCurrentPage] = useState('Home');
   const [theme] = useContext(ColorContext)
 
   const handlePageChange = (page) => {
