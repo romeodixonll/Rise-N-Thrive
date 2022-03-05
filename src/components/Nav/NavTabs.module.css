@@ -1,0 +1,17 @@
+.logo {
+    height: 50px;
+    width: 50px;
+}
+
+.ul {
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+    align-self: center;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
