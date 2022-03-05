@@ -1,4 +1,4 @@
-import react from 'react';
+import {useContext} from 'react';
 
 import classes from './Home.module.css'
 
@@ -8,11 +8,14 @@ import Weather from './weather/Weather';
 import Tasks from './tasks/Tasks';
 import Calendar from './calendar/Calendar';
 
+import { ColorContext } from '../../../store/color-context';
+
 const Home = () => {
+    const [textColor] = useContext(ColorContext)
 
     return <div className={classes.flex} style={{ height: '94vh'}}>
         <div className={`${classes.flex_column} ${classes.column1}`}>
-            <h1 style={{color:'#C2C2C2'}}>Good Morning, Michael</h1>
+            <h1 style={{color:textColor}}>Good Morning, Michael</h1>
             <div className={classes.flex}>
                 <div className={classes.flex_column} style={{width: '50%'}}>
                     <News />

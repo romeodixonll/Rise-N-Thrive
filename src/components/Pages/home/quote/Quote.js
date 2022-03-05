@@ -1,10 +1,15 @@
-import react from 'react';
+import { useContext } from 'react';
+
 import classes from './Quote.module.css';
 
 import Card from '../../../UI/Card';
 
+import { ColorContext } from '../../../../store/color-context';
+
 const Quote = () => {
-    return <Card className={classes.card} style={{backgroundColor:'rgb(105, 120, 255, .25)'}}>
+    const [textColor] = useContext(ColorContext)
+
+    return <Card className={classes.card} style={{backgroundColor:`${textColor}52`}}>
         <h1>quote</h1>
     </Card>
 };

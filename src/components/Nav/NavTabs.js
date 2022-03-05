@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 
 import homeBlack from '../../assets/images/nav-images/home-black.png';
 import algoBlack from '../../assets/images/nav-images/algorithm-black.png';
@@ -18,10 +18,16 @@ import settingGrey from '../../assets/images/nav-images/settings-grey.png';
 
 import classes from './NavTabs.module.css'
 
+import { ColorContext } from '../../store/color-context';
+
+
 const NavTabs = ({currentPage, handlePageChange}) => {
+
+    const [textColor] = useContext(ColorContext)
+
     let noStyle = {color:'white', backgroundColor:'transparent'}
     let activeAnchorBackground = {backgroundColor:'#232323'};
-    let activeAnchorColor = {color:'#6978FF'}
+    let activeAnchorColor = {color:textColor}
 
     return (
         <ul className={classes.ul}>

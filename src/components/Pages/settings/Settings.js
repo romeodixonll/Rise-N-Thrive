@@ -1,5 +1,37 @@
-const Settings = () => {
-    return <div></div>
-}
+import {useState, useContext} from 'react'
 
-export default Settings
+import classes from './Settings.module.css';
+
+import { ColorContext } from '../../../store/color-context';
+
+const Settings = () => {
+    const [textColor, setTextColor] = useContext(ColorContext)
+
+    const style = {color: textColor, transition:'200ms linear'}
+
+    const textColorHandler = (color) => {
+        setTextColor(color)
+    }
+
+    return <div className={classes.flex_column} style={{ height: '94vh' }}>
+        <div className={classes.flex_column1}>
+            <h1 style={style}>Settings</h1>
+            <h2 style={style}>Change your color</h2>
+            <div className={classes.flex}>
+                <button style={{ backgroundColor: '#6978FF' }} onClick={()=> textColorHandler('#6978FF')}></button>
+                <button style={{ backgroundColor: '#CB0000' }} onClick={()=> textColorHandler('#CB0000')}></button>
+                <button style={{ backgroundColor: '#FBFF26' }} onClick={()=> textColorHandler('#FBFF26')}></button>
+                <button style={{ backgroundColor: '#B17BC3' }} onClick={()=> textColorHandler('#B17BC3')}></button>
+                <button style={{ backgroundColor: '#000000' }} onClick={()=> textColorHandler('#000000')}></button>
+                <button style={{ backgroundColor: '#FFFFFF' }} onClick={()=> textColorHandler('#FFFFFF')}></button>
+            </div>
+            <h2 style={style}>Change your theme</h2>
+        </div>
+        <div className={classes.logoutButtons}>
+            <button>Logout</button>
+            <button>Delete Account</button>
+        </div>
+    </div>
+};
+
+export default Settings;

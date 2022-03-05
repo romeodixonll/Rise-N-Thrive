@@ -1,0 +1,59 @@
+.flex_column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.flex_column1 {
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+    flex-grow: 1;
+}
+
+.flex_column h1 {
+    font-size: 50px;
+}
+
+.flex {
+    display: flex;
+    gap: 10px;
+}
+
+.flex button {
+    height: 30px;
+    width: 30px;
+    border: none;
+    border-radius: 2px;
+}
+
+.flex button:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.logoutButtons {
+    display: flex;
+    gap:10px
+}
+
+.logoutButtons button {
+    width: 150px;
+    padding:5px;
+    font-size: 18px;
+    border-radius: 2px;
+    border: 3px red solid;
+    color: white;
+    background-color: transparent;
+    transition: 200ms linear;
+}
+
+.logoutButtons button:nth-child(2n) {
+    background-color: red;
+}
+
+.logoutButtons button:hover {
+    background-color: rgba(255, 0, 0, 0.452);
+    border: rgba(255, 0, 0, 0.452) 3px solid;
+    cursor: pointer;
+}
