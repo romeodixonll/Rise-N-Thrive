@@ -1,3 +1,28 @@
 .card {
+    display: flex;
+    flex-direction: column;
     flex:1 0 50%;
+    gap:20px;
+}
+
+.card h2 {
+    font-size: 34px;
+}
+
+.taskButtons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.card button {
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    color: white;
+    transition: 300ms;
+}
+
+.card button:hover {
+    cursor: pointer;
+    background-color: black;
 }

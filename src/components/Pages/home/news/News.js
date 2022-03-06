@@ -8,7 +8,7 @@ import Card from '../../../UI/Card';
 import useHttp from '../../../utils/API';
 
 const News = () => {
-    const [currentNewsData, setCurrentNewsData] = useState({title:null, image:null, image_caption:null,abstract:null,link:null,date:null})
+    const [currentNewsData, setCurrentNewsData] = useState({ title: null, image: null, image_caption: null, abstract: null, link: null, date: null })
     let pulledData = [];
     let currentIndex = 0;
     let APIKEY = 'AtuvVAhSUt6GVa3mX58pn9tpVhjsAzpF'
@@ -28,7 +28,9 @@ const News = () => {
         setCurrentNewsData(pulledData[0])
     }
 
-    const { isLoading, error, sendRequest: fetchNews } = useHttp({ url: `https://api.nytimes.com/svc/topstories/v2//home.json?api-key=${APIKEY}` }, transformData)
+    const { isLoading, error, sendRequest: fetchNews } = useHttp({
+        url: `https://api.nytimes.com/svc/topstories/v2//home.json?api-key=${APIKEY}`
+    }, transformData)
 
     useEffect(() => {
         fetchNews()
@@ -55,9 +57,9 @@ const News = () => {
                 <div>
                     <h3>{currentNewsData.title}</h3>
                     <div className={classes.toggleNewsDiv}>
-                        <img src={arrowWhite} onClick={() => toggleNewsHandler('back')}/>
+                        <img src={arrowWhite} onClick={() => toggleNewsHandler('back')} />
                         <img src={currentNewsData.image} />
-                        <img src={arrowWhite} onClick={() => toggleNewsHandler('next')}/>
+                        <img src={arrowWhite} onClick={() => toggleNewsHandler('next')} />
                     </div>
                     <h4>{currentNewsData.abstract}</h4>
                 </div>
