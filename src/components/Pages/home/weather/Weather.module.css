@@ -1,3 +1,20 @@
 .card {
     flex-grow:1;
+    display: flex;
+    flex-direction: column;
+    gap:9px
+}
+
+.card div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card div h2 {
+    font-size: 34px;
+}
+
+.card h3 {
+    font-size: 20px;
 }

@@ -7,10 +7,11 @@ import arrowWhite from '../../../../assets/images/arrow-white.png'
 import Card from '../../../UI/Card';
 import useHttp from '../../../utils/API';
 
+let pulledData = [];
+let currentIndex = 0;
+
 const News = () => {
     const [currentNewsData, setCurrentNewsData] = useState({ title: null, image: null, image_caption: null, abstract: null, link: null, date: null })
-    let pulledData = [];
-    let currentIndex = 0;
     let APIKEY = 'AtuvVAhSUt6GVa3mX58pn9tpVhjsAzpF'
 
     const transformData = (data) => {
@@ -46,8 +47,7 @@ const News = () => {
         }
         console.log(pulledData)
         console.log(currentIndex)
-        console.log(pulledData[currentIndex])
-        // setCurrentNewsData(pulledData[currentIndex])
+        setCurrentNewsData(pulledData[currentIndex])
     }
 
     return (

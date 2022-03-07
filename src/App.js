@@ -10,8 +10,8 @@ import { ColorContext } from './store/color-context';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('Home');
-  const [theme] = useContext(ColorContext)
-
+  const [ , ,theme] = useContext(ColorContext)
+  console.log(theme)
   const handlePageChange = (page) => {
     setCurrentPage(page)
   }
@@ -21,7 +21,7 @@ function App() {
       <main
         // className="flex"
         className={classes.flex}
-        style={{ backgroundColor: theme !=='#393939' ? '#393939' : '#D0D0D0', transition:'300ms' }}>
+        style={{ backgroundColor: theme, transition:'300ms' }}>
         <Nav handlePageChange={handlePageChange} currentPage={currentPage} />
         <Pages currentPage={currentPage} />
       </main>

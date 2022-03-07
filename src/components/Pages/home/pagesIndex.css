@@ -1,0 +1,33 @@
+.slide-enter {
+
+}
+
+.slide-enter-active {
+    animation: slideIn 400ms ease-out forwards
+}
+
+.slide-exit {
+
+}
+
+.slide-fade-active {
+    animation: slideOut 400ms ease-out forwards
+}
+
+@keyframes slideIn {
+    0% {
+        transform:translateY(-100%)
+    }
+    100% {
+        transform:translateY(0%)
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        transform:translateY(0%)
+    }
+    100% {
+        transform:translateY(100%)
+    } 
+}

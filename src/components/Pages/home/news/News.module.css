@@ -50,6 +50,7 @@
     width: 86%;
     border-radius: 10px;
     max-width: 294px;
+    max-height: 196px;
 }
 
 .card h4 {

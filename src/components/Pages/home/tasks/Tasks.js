@@ -7,36 +7,40 @@ import TaskList from './TaskList'
 
 const dummyTasks = [
     {
-        id:'0',
+        id:0,
         task: 'Make bed',
         finished: false,
     },
     {
-        id:'1',
+        id:1,
         task: 'Run for 15 minutes',
         finished: false,
     },
     {
-        id:'2',
+        id:2,
         task: 'Eat',
         finished: false,
     },
     {
-        id:'3',
+        id:3,
         task: 'Pet Chaco',
         finished: false,
     }
 ]
 
+let nextid = dummyTasks[dummyTasks.length - 1].id
+
 const Task = () => {
     const [tasks, setTasks] = useState(dummyTasks)
     const [deleteActive, setDeleteActive] = useState(false)
     const addTaskHandler = () => {
-        setTasks([...tasks, 'Double Click to Edit'])
+        setTasks([...tasks, {id:nextid,task:'Double Click to Edit',finished:false}])
+        nextid++
+        
     }
 
     const deleteModeHandler = () => {
-        setDeleteActive(true)
+        deleteActive ? setDeleteActive(false) : setDeleteActive(true)
     }
 
     const deleteTask = (id) => {
@@ -68,8 +72,12 @@ const Task = () => {
         updateTaskName={updateTaskName}
         />
         <div className={classes.taskButtons}>
-            <button onClick={addTaskHandler}>add task</button>
-            <button onClick={deleteModeHandler}>delete task</button>
+            <button 
+            onClick={addTaskHandler}
+            >add task</button>
+            <button 
+            onClick={deleteModeHandler}
+            >delete task</button>
         </div>
     </Card>
 };

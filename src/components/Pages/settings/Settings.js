@@ -5,8 +5,7 @@ import classes from './Settings.module.css';
 import { ColorContext } from '../../../store/color-context';
 
 const Settings = () => {
-    const [textColor, setTextColor] = useContext(ColorContext)
-    const [theme, setTheme] = useContext(ColorContext);
+    const [textColor, setTextColor, theme, setTheme] = useContext(ColorContext)
 
     const style = {color: textColor, transition:'200ms linear'}
 
