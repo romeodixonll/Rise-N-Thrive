@@ -35,7 +35,7 @@ const Settings = () => {
             <div className={classes.themeToggle} onClick={setThemeHandler}>
                 <p>dark</p>
                 <p>light</p>
-                <div className={theme === '#393939' ? classes.lightModeBlock : classes.darkModeBlock }></div>
+                <div className={theme === '#393939' ? classes.darkModeBlock : classes.lightModeBlock }></div>
             </div>
         </div>
         <div className={classes.logoutButtons}>

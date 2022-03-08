@@ -18,22 +18,21 @@
     transition: 100ms linear;
 }
 
-.ul li a {
+.ul li a div button {
     transition:100ms linear;
-    text-decoration: none;
+    /* text-decoration: none; */
+    /* border: none; */
+    background-color: transparent;
     color: white;
+}
+
+li:hover,
+.ul li a div button  {
+    cursor: pointer;
 }
 
 .flex {
     display: flex;
     align-items: center;
     gap: 20px;
-}
-
-.darkModeSelection div{
-    background-color: rgb(151, 151, 151);
-}
-
-.lightModeSelection div {
-    background-color: rgb(31, 31, 31);
 }

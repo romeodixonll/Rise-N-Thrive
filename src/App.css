@@ -85,3 +85,12 @@ html {
 .slideUp-exit-done {
 	transform: translateY(-100%);
 }
+
+
+.darkModeSelection div{
+    background-color: rgb(151, 151, 151);
+}
+
+.lightModeSelection div {
+    background-color: rgb(31, 31, 31);
+}

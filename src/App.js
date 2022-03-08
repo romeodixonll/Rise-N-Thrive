@@ -17,19 +17,13 @@ import Settings from './pages/Settings';
 import { ColorContext } from './store/color-context';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('Home');
   const [, , theme] = useContext(ColorContext)
-  console.log(theme)
-  const handlePageChange = (page) => {
-    setCurrentPage(page)
-  }
 
-  console.log(theme)
   return (
     <main
     className={classes.flex}
       style={{ backgroundColor: theme, transition: '300ms' }}>
-      <Nav handlePageChange={handlePageChange} currentPage={currentPage} />
+      <Nav />
       <Route render={({location}) => (
         <TransitionGroup>
         <CSSTransition

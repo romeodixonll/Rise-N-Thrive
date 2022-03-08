@@ -2,11 +2,11 @@ import {useContext} from 'react';
 
 import classes from './Home.module.css'
 
-import News from '../components/Pages/home/news/News';
-import Quote from '../components/Pages/home/quote/Quote';
-import Weather from '../components/Pages/home/weather/Weather';
-import Tasks from '../components/Pages/home/tasks/Tasks';
-import Calendar from '../components/Pages/home/calendar/Calendar';
+import News from '../components/PageComponents/home/news/News';
+import Quote from '../components/PageComponents/home/quote/Quote';
+import Weather from '../components/PageComponents/home/weather/Weather';
+import Tasks from '../components/PageComponents/home/tasks/Tasks';
+import Calendar from '../components/PageComponents/home/calendar/Calendar';
 
 import { ColorContext } from '../store/color-context';
 
