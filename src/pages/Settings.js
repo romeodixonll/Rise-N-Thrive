@@ -19,7 +19,7 @@ const Settings = () => {
     }
 
 
-    return <div className={`${classes.flex_column} page`} style={{ height: '94vh' }}>
+    return <div className={`${classes.flex_column} page`} style={{ height: '94vh',overflow:"hidden" }}>
         <div className={classes.flex_column1}>
             <h1 style={style}>Settings</h1>
             <h2 style={style}>Change your color</h2>

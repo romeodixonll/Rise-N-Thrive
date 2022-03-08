@@ -13,7 +13,7 @@ import { ColorContext } from '../store/color-context';
 const Home = () => {
     const [textColor] = useContext(ColorContext)
 
-    return <div className={`${classes.flex} page`} style={{ height: '94vh'}}>
+    return <div className={`${classes.flex} page`} style={{ height: '94vh',overflow:"hidden"}}>
         <div className={`${classes.flex_column} ${classes.column1}`}>
             <h1 style={{color:textColor}}>Good Morning, Michael</h1>
             <div className={classes.flex}>

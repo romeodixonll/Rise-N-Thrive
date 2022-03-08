@@ -27,8 +27,7 @@ function App() {
   console.log(theme)
   return (
     <main
-      // className="flex"
-      className={classes.flex}
+    className={classes.flex}
       style={{ backgroundColor: theme, transition: '300ms' }}>
       <Nav handlePageChange={handlePageChange} currentPage={currentPage} />
       <Route render={({location}) => (
