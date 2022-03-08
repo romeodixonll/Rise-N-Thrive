@@ -8,6 +8,8 @@
     flex-direction: column;
     gap: 3vh;
     align-self: center;
+    height: 100vh;
+    margin: auto 0;
 }
 
 .ul li {

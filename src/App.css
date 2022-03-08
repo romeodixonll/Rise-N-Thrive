@@ -54,3 +54,32 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+.page {
+	position: absolute;
+	margin-right:3vw;
+}
+
+.slideUp-appear,
+.slideUp-enter {
+	transform: translateY(120%);
+}
+
+.slideUp-appear-active,
+.slideUp-enter.slideUp-enter-active {
+	transform: translateY(0%);
+	transition: 1000ms ease-in-out;
+}
+
+.slideUp-exit {
+	transform: translateY(0%);
+}
+
+.slideUp-exit-active {
+	transform: translateY(-120%);
+	transition: 1000ms ease-in-out;
+}
+
+.slideUp-exit-done {
+	transform: translateY(-100%);
+}
