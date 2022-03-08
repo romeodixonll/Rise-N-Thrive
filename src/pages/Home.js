@@ -2,13 +2,13 @@ import {useContext} from 'react';
 
 import classes from './Home.module.css'
 
-import News from './news/News';
-import Quote from './quote/Quote';
-import Weather from './weather/Weather';
-import Tasks from './tasks/Tasks';
-import Calendar from './calendar/Calendar';
+import News from '../components/Pages/home/news/News';
+import Quote from '../components/Pages/home/quote/Quote';
+import Weather from '../components/Pages/home/weather/Weather';
+import Tasks from '../components/Pages/home/tasks/Tasks';
+import Calendar from '../components/Pages/home/calendar/Calendar';
 
-import { ColorContext } from '../../../store/color-context';
+import { ColorContext } from '../store/color-context';
 
 const Home = () => {
     const [textColor] = useContext(ColorContext)

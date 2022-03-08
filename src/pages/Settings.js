@@ -2,7 +2,7 @@ import {useState, useContext} from 'react'
 
 import classes from './Settings.module.css';
 
-import { ColorContext } from '../../../store/color-context';
+import { ColorContext } from '../store/color-context';
 
 const Settings = () => {
     const [textColor, setTextColor, theme, setTheme] = useContext(ColorContext)

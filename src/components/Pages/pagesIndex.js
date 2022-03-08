@@ -3,9 +3,9 @@ import {useState} from 'react'
 import CSSTransition from 'react-transition-group/CSSTransition'
 
 import Home from './home/Home';
-import Algorithm from './algorithm/Algorithm';
-import Game from './game/Game';
-import Stocks from './stocks/Stocks';
+import Algorithm from '../../pages/Algorithm';
+import Game from '../../pages/Game';
+import Stocks from '../../pages/Stocks';
 import Settings from './settings/Settings';
 
 let animationTiming = {

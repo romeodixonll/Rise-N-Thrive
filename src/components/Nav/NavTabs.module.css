@@ -18,10 +18,20 @@
 
 .ul li a {
     transition:100ms linear;
+    text-decoration: none;
+    color: white;
 }
 
 .flex {
     display: flex;
     align-items: center;
     gap: 20px;
+}
+
+.darkModeSelection div{
+    background-color: rgb(151, 151, 151);
+}
+
+.lightModeSelection div {
+    background-color: rgb(31, 31, 31);
 }

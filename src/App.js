@@ -1,9 +1,16 @@
-import { Fragment, useContext, useState } from 'react'
+import { useContext, useState } from 'react'
+import { Route, Switch, Redirect } from 'react-router-dom';
+
 import './App.css';
 import classes from './App.module.css';
 
-import Pages from './components/Pages/pagesIndex';
 import Nav from './components/Nav/NavTabs'
+import Home from './pages/Home';
+import Algorithm from './pages/Algorithm';
+import Game from './pages/Game';
+import Stocks from './pages/Stocks';
+import Settings from './pages/Settings';
+
 
 // import ColorContextProvider from './store/color-context';
 import { ColorContext } from './store/color-context';
@@ -23,7 +30,26 @@ function App() {
         className={classes.flex}
         style={{ backgroundColor: theme, transition:'300ms' }}>
         <Nav handlePageChange={handlePageChange} currentPage={currentPage} />
-        <Pages currentPage={currentPage} />
+        <Switch>
+          <Route path="/" exact>
+            <Redirect to="/home" /> 
+          </Route>
+          <Route path="/home">
+            <Home />
+          </Route>
+          <Route path="/algorithm">
+            <Algorithm />
+          </Route>
+          <Route path="/game">
+            <Game />
+          </Route>
+          <Route path="/stocks">
+            <Stocks />
+          </Route>
+          <Route path="/settings">
+            <Settings />
+          </Route>
+        </Switch>
       </main>
   );
 }
