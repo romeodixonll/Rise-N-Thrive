@@ -6,10 +6,13 @@ import Card from '../../../UI/Card';
 import { ColorContext } from '../../../../store/color-context'
 
 const Instructions = () => {
-    const [textColor] = useContext(ColorContext)
-    return <Card className={classes.card} style={{ backgroundColor: `${textColor}52`, color:'white' }}>
+    const [textColor, ,theme] = useContext(ColorContext)
+    return     <Card className={classes.card}
+    style={theme === "#393939"
+        ? { backgroundColor: `${textColor}52`, color: 'white' }
+        : { backgroundColor: `${textColor}99`, color: 'black' }}>
         <h2>Instructions</h2>
-        <hr />
+        <hr style={theme === '#393939' ? {borderColor:'white'} : {borderColor:'black'}}/>
         <h3>Add 1 to the digits array, then modify and return the original array.  Do not use any Array methods, such as `.join` or `.split`.
             For example, given the following array:
             <code>

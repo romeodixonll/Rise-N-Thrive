@@ -7,7 +7,7 @@ import Card from '../../../UI/Card';
 import { ColorContext } from '../../../../store/color-context';
 
 const Calendar = () => {
-    const [textColor] = useContext(ColorContext)
+    const [textColor, ,theme] = useContext(ColorContext)
 
 
  // Client ID and API key from the Developer Console
@@ -42,7 +42,10 @@ const Authorize = () => {
      })
  }
 
-    return <Card className={classes.card} style={{backgroundColor: `${textColor}52`}}>
+    return <Card className={classes.card}
+    style={theme === "#393939"
+        ? { backgroundColor: `${textColor}52`, color: 'white' }
+        : { backgroundColor: `${textColor}99`, color: 'black' }}>
         <h1 onClick={Authorize}>Calendar</h1>
     </Card>
 }
