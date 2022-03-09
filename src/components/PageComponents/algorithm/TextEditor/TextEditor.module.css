@@ -1,6 +1,6 @@
 .editor_header {
     padding:1rem;
-    font-size: 50px;
+    font-size: 30px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
@@ -16,5 +16,4 @@
     flex-grow:1;
     display: flex;
     flex-direction: column;
-    
- }
+}

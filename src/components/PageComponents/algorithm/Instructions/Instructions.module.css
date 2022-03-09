@@ -1,0 +1,29 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    flex:1 1;
+    gap:10px;
+    min-width: 200px;
+    overflow-wrap: break-word;
+}
+
+.card h2 {
+    font-size: 28px;
+}
+
+.card hr {
+    width: 100%;
+}
+
+.card h3 {
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+.card h3 code {
+    background-color: rgba(128, 128, 128, 0.486);
+    width: fit-content;
+    padding: 2px;
+    border-radius: 2px;
+}

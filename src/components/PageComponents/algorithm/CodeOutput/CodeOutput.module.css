@@ -1,0 +1,26 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 50%;
+    max-width: 212px;
+}
+
+.card div {
+    display: flex;
+    flex-direction: column;
+    flex:1 1;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.card hr {
+    width: 100%;
+}
+
+.card h3 {
+    font-size: 16px;
+}
+
+.card p {
+    font-size: 24px;
+}

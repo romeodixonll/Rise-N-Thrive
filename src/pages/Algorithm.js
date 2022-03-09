@@ -2,12 +2,17 @@ import { useState, useContext } from 'react';
 
 import classes from './Algorithm.module.css'
 
-import TextEditor from '../components/PageComponents/algorithm/TextEditor'
+import TextEditor from '../components/PageComponents/algorithm/TextEditor/TextEditor'
+import CompletionHistory from '../components/PageComponents/algorithm/CompletionHistory/CompletionHistory';
 import Card from '../components/UI/Card'
-import { ColorContext } from '../store/color-context';
+import CodeOutput from '../components/PageComponents/algorithm/CodeOutput/CodeOutput';
+import Instructions from '../components/PageComponents/algorithm/Instructions/Instructions';
+
 const Algorithm = () => {
     const [code, setCode] = useState('');
-    const [textColor] = useContext(ColorContext);
+    const [correct, setCorrect] = useState(false);
+    const [isLoading, setIsLoading] = useState(false)
+
     return <div className={`${classes.flex} page`} style={{ height: '94vh' }}>
         <div className={classes.flex_column}>
             <div className={classes.row1}>
@@ -21,13 +26,11 @@ const Algorithm = () => {
                         <p>INCORRECT</p>
                     </div>
                 </div>
-                <Card className={classes.column2} style={{ backgroundColor: textColor }}>
-                    <h3>Instruction</h3>
-                </Card>
+                <Instructions />
             </div>
             <div className={classes.row2}>
-                <Card style={{ backgroundColor: textColor }}>tset</Card>
-                <Card style={{ backgroundColor: "rgb(41, 41, 41)" }}>tset</Card>
+                <CodeOutput />
+                <CompletionHistory />
             </div>
         </div>
     </div>
