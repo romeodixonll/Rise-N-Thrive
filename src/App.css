@@ -59,7 +59,7 @@ html {
 }
 .page {
 	position: absolute;
-	margin-right:3vw;
+	/* margin-right:3vw; */
 }
 
 .slideUp-appear,
@@ -93,4 +93,11 @@ html {
 
 .lightModeSelection div {
     background-color: rgb(31, 31, 31);
+}
+
+.CodeMirror {
+	flex-grow: 1!important;
+	padding:1vh 0;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
 }

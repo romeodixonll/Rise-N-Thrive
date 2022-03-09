@@ -25,7 +25,7 @@ function App() {
       style={{ backgroundColor: theme, transition: '300ms' }}>
       <Nav />
       <Route render={({location}) => (
-        <TransitionGroup>
+        <TransitionGroup style={{position:'relative',flexGrow:1}}>
         <CSSTransition
           key={location.key}
           timeout={1000}

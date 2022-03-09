@@ -1,0 +1,20 @@
+.editor_header {
+    padding:1rem;
+    font-size: 50px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.editor_container {
+    display: flex;
+    flex-direction: column;
+    flex:1;
+}
+
+.codeMirror_wrapper {
+    /* height:100%; */
+    flex-grow:1;
+    display: flex;
+    flex-direction: column;
+    
+ }
