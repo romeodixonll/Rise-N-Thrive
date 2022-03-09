@@ -15,7 +15,7 @@ const Settings = () => {
 
     const setThemeHandler = () => {
         console.log('changing theme')
-        theme === '#393939' ? setTheme('#D0D0D0') : setTheme('#393939') 
+        theme === '#393939' ? setTheme('#FFFFFF') : setTheme('#393939') 
     }
 
 

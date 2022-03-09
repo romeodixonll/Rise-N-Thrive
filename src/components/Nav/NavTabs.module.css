@@ -18,7 +18,7 @@
     transition: 100ms linear;
 }
 
-.ul li a div button {
+.ul li a div p {
     transition:100ms linear;
     /* text-decoration: none; */
     /* border: none; */
@@ -27,8 +27,20 @@
 }
 
 li:hover,
-.ul li a div button  {
+.ul li a div p  {
     cursor: pointer;
+}
+
+.ul li a div {
+    padding: 10px;
+    background-color: transparent;
+    transition-property: background-color;
+    transition: 300ms;
+}
+
+.ul li a div:hover {
+    border-radius: 5px;
+    background-color: rgba(128, 128, 128, 0.37);
 }
 
 .flex {
@@ -36,3 +48,5 @@ li:hover,
     align-items: center;
     gap: 20px;
 }
+
+

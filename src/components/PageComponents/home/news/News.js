@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import classes from './News.module.css'
 import arrowBlack from '../../../../assets/images/arrow-black.png'
@@ -6,12 +6,15 @@ import arrowWhite from '../../../../assets/images/arrow-white.png'
 
 import Card from '../../../UI/Card';
 import useHttp from '../../../utils/API';
+import { ColorContext } from '../../../../store/color-context';
 
 let pulledData = [];
 let currentIndex = 0;
 
 const News = () => {
     const [currentNewsData, setCurrentNewsData] = useState({ title: null, image: null, image_caption: null, abstract: null, link: null, date: null })
+    const [ , ,theme] = useContext(ColorContext)
+
     let APIKEY = 'AtuvVAhSUt6GVa3mX58pn9tpVhjsAzpF'
 
     const transformData = (data) => {
@@ -49,17 +52,19 @@ const News = () => {
         console.log(currentIndex)
         setCurrentNewsData(pulledData[currentIndex])
     }
-
+    console.log(theme)
     return (
-        <Card className={classes.card} style={{ backgroundColor: '#292929', color: 'white' }}>
+        <Card className={classes.card} style={theme === "#393939"
+        ? { backgroundColor: 'rgb(41, 41, 41)', color: 'white' }
+        : { backgroundColor:'rgb(41, 41, 41, 0.20)', color: 'black'}}>
             <div className={classes.newsContent}>
                 <h2>Whats new today...</h2>
                 <div>
                     <h3>{currentNewsData.title}</h3>
                     <div className={classes.toggleNewsDiv}>
-                        <img src={arrowWhite} onClick={() => toggleNewsHandler('back')} />
+                        <img src={theme==="#393939" ? arrowWhite : arrowBlack} onClick={() => toggleNewsHandler('back')} />
                         <img src={currentNewsData.image} />
-                        <img src={arrowWhite} onClick={() => toggleNewsHandler('next')} />
+                        <img src={theme==="#393939" ? arrowWhite : arrowBlack}  onClick={() => toggleNewsHandler('next')} />
                     </div>
                     <h4>{currentNewsData.abstract}</h4>
                 </div>

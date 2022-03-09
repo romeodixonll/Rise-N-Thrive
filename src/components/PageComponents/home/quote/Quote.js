@@ -24,7 +24,6 @@ const Quote = () => {
     }, transformData)
 
     useEffect(() => {
-        console.log('test')
         fetchQuote()
     }, [])
 

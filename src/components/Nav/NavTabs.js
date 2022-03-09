@@ -27,9 +27,12 @@ const NavTabs = () => {
     const [isTransitioning, setIsTransitioning] = useState(false)
     const [textColor, , theme] = useContext(ColorContext)
     const [iconColor, setIconColor] = useState('Grey')
-    let noStyle = {color:'white', backgroundColor:'transparent'}
-    let activeAnchorBackground = {backgroundColor:'#232323'};
-    let activeAnchorColor = {color:textColor}
+
+    const [currentPage, setCurrentPage] = useState('home')
+
+    // let noStyle = { color: 'white', backgroundColor: 'transparent' }
+    // let activeAnchorBackground = { backgroundColor: '#232323' };
+    // let activeAnchorColor = { color: textColor }
 
     const styleHandler = () => {
         if (theme === "#393939") {
@@ -41,79 +44,82 @@ const NavTabs = () => {
         }
     }
 
-    const buttonDisableHandler = () => {
-        setIsTransitioning(true)
-        setTimeout(()=>setIsTransitioning(false), 1000)
-      }
+    const handleNavClick = (e) => {
+        let selectedPage = e.currentTarget.href.split('/').pop();
+        
+        if (isTransitioning || currentPage == selectedPage) {
+            e.preventDefault();
+        } else {
+            setCurrentPage(selectedPage);
+            setIsTransitioning(true)
+            setTimeout(() => setIsTransitioning(false), 1000)
+        }
+    }
 
     return (
         <ul className={classes.ul}>
             <li>
                 <NavLink
-                    to="/home" activeStyle={activeAnchorColor}>
+                    onClick={handleNavClick}
+                    to="/home"
+                    exact>
                     <div className={classes.flex}>
-                        <img 
-                        className={classes.logo} 
-                        src={theme === "#393939" ? homeGrey : homeBlack} 
-                        alt="home logo"/>
-                        <button 
-                        onClick={buttonDisableHandler} 
-                        disabled={isTransitioning}>Home</button>
+                        <img
+                            className={classes.logo}
+                            src={theme === "#393939" ? homeGrey : homeBlack}
+                            alt="home logo" />
+                        <p style={theme === "#393939" ? {color:'white'} : {color:'black'}}>Home</p>
                     </div>
                 </NavLink>
             </li>
             <li>
                 <NavLink
-                    to="/algorithm" activeStyle={activeAnchorColor}>
+                onClick={handleNavClick}
+                    to="/algorithm">
                     <div className={classes.flex}>
-                        <img 
-                        className={classes.logo} 
-                        src={theme === "#393939" ? algoGrey : algoBlack} alt="algo logo"/>
-                        <button 
-                        onClick={buttonDisableHandler} 
-                        disabled={isTransitioning}>Algorithm</button>
+                        <img
+                            className={classes.logo}
+                            src={theme === "#393939" ? algoGrey : algoBlack} alt="algo logo" />
+                        <p style={theme === "#393939" ? {color:'white'} : {color:'black'}}>Algorithm</p>
                     </div>
                 </NavLink>
             </li>
             <li>
                 <NavLink
-                    to="/game" activeStyle={activeAnchorColor}>
+                onClick={handleNavClick}
+                    to="/game">
                     <div className={classes.flex}>
-                        <img  
-                        className={classes.logo} 
-                        src={theme === "#393939" ? gameGrey : gameBlack} 
-                        alt="game logo"/>
-                        <button 
-                        onClick={buttonDisableHandler} 
-                        disabled={isTransitioning}>Game</button>
+                        <img
+                            className={classes.logo}
+                            src={theme === "#393939" ? gameGrey : gameBlack}
+                            alt="game logo" />
+                        <p style={theme === "#393939" ? {color:'white'} : {color:'black'}}>Game</p>
                     </div>
                 </NavLink>
             </li>
             <li>
                 <NavLink
-                    to="/stocks" activeStyle={activeAnchorColor}> 
+                onClick={handleNavClick}
+                    to="/stocks">
                     <div className={classes.flex}>
-                        <img  
-                        className={classes.logo} 
-                        src={theme === "#393939" ? stockGrey : stockBlack} 
-                        alt="crypto logo"/>
-                        <button 
-                        onClick={buttonDisableHandler} 
-                        disabled={isTransitioning}>Stocks</button>
+                        <img
+                            className={classes.logo}
+                            src={theme === "#393939" ? stockGrey : stockBlack}
+                            alt="crypto logo" />
+                        <p style={theme === "#393939" ? {color:'white'} : {color:'black'}}>Stocks</p>
                     </div>
                 </NavLink>
             </li>
             <li>
                 <NavLink
-                    to="/settings" activeStyle={activeAnchorColor}>
+                onClick={handleNavClick}
+                    to="/settings">
                     <div className={classes.flex}>
-                        <img 
-                        className={classes.logo} 
-                        src={theme === "#393939" ? settingGrey : settingBlack}
-                        alt="settings logo"/>
-                        <button 
-                        onClick={buttonDisableHandler} 
-                        disabled={isTransitioning}>Settings</button>
+                        <img
+                            className={classes.logo}
+                            src={theme === "#393939" ? settingGrey : settingBlack}
+                            alt="settings logo" />
+                        <p style={theme === "#393939" ? {color:'white'} : {color:'black'}}>Settings</p>
                     </div>
                 </NavLink>
             </li>

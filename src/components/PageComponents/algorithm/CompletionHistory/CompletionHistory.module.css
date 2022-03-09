@@ -1,3 +1,6 @@
 .card {
     flex:1 0 50%;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: auto;
 }
