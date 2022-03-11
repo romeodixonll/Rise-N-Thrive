@@ -36,19 +36,19 @@ function App() {
             <Route path="/" exact>
               <Redirect to="/home" />
             </Route>
-            <Route path="/home">
+            <Route path="/home" exact>
               <Home />
             </Route>
-            <Route path="/algorithm">
+            <Route path="/algorithm" exact>
               <Algorithm />
             </Route>
-            <Route path="/game">
+            <Route path="/game" exact>
               <Game />
             </Route>
-            <Route path="/stocks">
+            <Route path="/stocks" exact>
               <Stocks />
             </Route>
-            <Route path="/settings">
+            <Route path="/settings" exact>
               <Settings />
             </Route>
           </Switch>
