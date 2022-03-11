@@ -21,6 +21,7 @@
     border: 0;
     border-bottom: 1px black solid;
     padding: 3px;
+    min-width: 0px;
 }
 
 .form input:focus {

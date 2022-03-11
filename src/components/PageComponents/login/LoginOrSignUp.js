@@ -20,7 +20,7 @@ const LoginOrSignUp = () => {
             </NavLink>
         </nav>
         <Route render={({ location }) => (
-            <TransitionGroup component={'form'} style={{position:'relative'}}>
+            <TransitionGroup component={'form'} style={{position:'relative'}} className={classes.form}>
                 <CSSTransition
                     key={location.key}
                     timeout={150}

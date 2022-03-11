@@ -1,5 +1,3 @@
-
-
 .card {
     position: absolute;
     z-index: 1000;
@@ -20,6 +18,8 @@
     font-family: raleway;
     font-weight: 600;
     font-size: 50px;
+    animation: 3s forwards slideInAndFadeIn;
+    color: #fff0d3;
 }
 
 
@@ -76,4 +76,15 @@
 
 .fade-exit-done {
 	opacity: 0;
+}
+
+@keyframes slideInAndFadeIn {
+    from {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0px);
+        opacity: 1;
+    }
 }

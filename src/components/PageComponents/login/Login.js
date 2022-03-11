@@ -7,8 +7,8 @@ const Login = () => {
             <div>
                 <h2>Welcome back!</h2>
                 <div className={classes.inputsColumn}>
-                    <input type="email" placeholder='email' />
-                    <input type="password" placeholder='password' />
+                    <input type="email" placeholder='Email' />
+                    <input type="password" placeholder='Password' />
                 </div>
             </div>
             <button type="submit">Login</button>

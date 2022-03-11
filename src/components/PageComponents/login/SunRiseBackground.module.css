@@ -35,7 +35,7 @@ html {
     width: 100%;
     height: 30%;
     top: 70%;
-    background: radial-gradient(at 50% 10%, #007, #004);
+    background: linear-gradient(to right, #007, #020285, #007, #020285, #007, #020285);
     z-index: 60;
   }
   
@@ -47,7 +47,7 @@ html {
     z-index: 40;
     background: linear-gradient(#ff0, rgb(209, 94, 0));
     box-shadow: 0 0 40px 6px rgba(253, 236, 2, 0.527), 0 0 150px 10px rgb(167, 142, 95);
-    animation: rise 24s ease-in forwards;
+    animation: rise 24s ease forwards;
   }
   
   @keyframes rise {
@@ -129,7 +129,7 @@ html {
   .wave {
     margin: 26px 7px;
     border-left: 3px solid transparent;
-    border-top: 6px solid a2a2a74d;
+    border-top: 6px solid #a2a2a74d;
     border-right: 50px solid transparent;
     transform: rotatez(6deg);
     z-index: 60;
