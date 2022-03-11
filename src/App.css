@@ -102,3 +102,26 @@ html {
 	border-bottom-right-radius: 10px;
 }
 
+.fade-appear,
+.fade-enter {
+	opacity: 0;
+}
+
+.fade-appear-active,
+.fade-enter.fade-enter-active {
+	opacity: 1;
+	transition: 150ms ease-in-out ;
+}
+
+.fade-exit {
+	transition: 150ms ease-in-out;
+	opacity: 0;
+}
+
+.fade-exit-active {
+	opacity: 0;
+}
+
+.fade-exit-done {
+	opacity: 1;
+}

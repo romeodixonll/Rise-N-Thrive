@@ -1,0 +1,79 @@
+
+
+.card {
+    position: absolute;
+    z-index: 1000;
+    opacity: .90;
+    top: 40%;
+    left: 30%;
+    transform:translate(-50%,-50%);
+    width:40vw;
+    height: 32.7vh;
+    transition: 300ms;
+    display: flex;
+    flex-direction: column;
+}
+
+.card h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-family: raleway;
+    font-weight: 600;
+    font-size: 50px;
+}
+
+
+.credentialsToggle {
+    display: flex;
+    transition: 300ms;
+}
+
+.credentialsToggle a button {
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+
+.credentialsToggle a {
+    flex-grow: 1;
+    height:5vh;
+}
+
+.credentialsToggle button:hover {
+    cursor: pointer;
+}
+
+.card nav a:nth-child(1) button {
+    background-color: #2A9D8F;
+    border-top-left-radius: 6px;
+}
+.card nav a:nth-child(2) button {
+    background-color: #F4A261;
+    border-top-right-radius: 6px;
+}
+
+
+
+.fade-appear,
+.fade-enter {
+	opacity: 0;;
+}
+
+.fade-appear-active,
+.fade-enter.slideUp-enter-active {
+	opacity: 1;;
+	transition: 150ms ease-in-out 150ms;
+}
+
+.fade-exit {
+	opacity: 1;
+}
+
+.fade-exit-active {
+	opacity: 1;
+	transition: 150ms ease-in-out;
+}
+
+.fade-exit-done {
+	opacity: 0;
+}
