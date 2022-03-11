@@ -1,0 +1,62 @@
+:root{
+    --blue: #6978FF;
+    --dark: #292929;
+    --gray: #393939;
+}
+
+body{
+    background-color: var(--gray);
+}
+
+button{
+    background-color: var(--blue);
+    border-radius: 15px;
+    border: none;
+    margin: auto;
+}
+
+#game-header{
+    display: flex;
+    justify-content: center;
+    background-color: var(--dark);
+    border-radius: 15px;
+    margin-bottom: 1rem;
+    padding: 1rem 0.5rem;
+}
+
+#title{
+    background-color: var(--blue);
+    border-radius: 15px;
+    margin: 0.5rem auto;
+    padding: 0.5rem;
+}
+
+#score{
+    background-color: var(--blue);
+    border-radius: 15px;
+    margin: 0.5rem auto;
+    padding: 0.5rem;
+}
+
+#parent{
+    position: relative;
+    justify-content: center;
+}
+
+#modal{
+    display: block;
+    background-color: var(--dark);
+    padding: 0.75rem 1rem;
+    border-radius: 15px;
+    position: absolute;
+    text-align: center;
+    top: 25%;
+    left: 15%;
+    box-shadow:black 4px 4px 10px;
+}
+
+#inner-modal{
+    background-color: var(--gray);
+    border-radius: 15px;
+    padding: 0.25rem 1rem;
+}
