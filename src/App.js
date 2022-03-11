@@ -21,41 +21,41 @@ function App() {
   const [, , theme] = useContext(ColorContext)
 
   return (
-    <Login />
-    // <main
-    // className={classes.flex}
-    //   style={{ backgroundColor: theme, transition: '300ms' }}>
-    //   <Nav />
-    //   <Route render={({location}) => (
-    //     <TransitionGroup style={{position:'relative',flexGrow:1}}>
-    //     <CSSTransition
-    //       key={location.key}
-    //       timeout={1000}
-    //       classNames="slideUp">
-    //       <Switch location={location}>
-    //         <Route path="/" exact>
-    //           <Redirect to="/home" />
-    //         </Route>
-    //         <Route path="/home">
-    //           <Home />
-    //         </Route>
-    //         <Route path="/algorithm">
-    //           <Algorithm />
-    //         </Route>
-    //         <Route path="/game">
-    //           <Game />
-    //         </Route>
-    //         <Route path="/stocks">
-    //           <Stocks />
-    //         </Route>
-    //         <Route path="/settings">
-    //           <Settings />
-    //         </Route>
-    //       </Switch>
-    //     </CSSTransition>
-    //   </TransitionGroup>
-    //   )} />
-    // </main>
+    // <Login />
+    <main
+    className={classes.flex}
+      style={{ backgroundColor: theme, transition: '300ms' }}>
+      <Nav />
+      <Route render={({location}) => (
+        <TransitionGroup style={{position:'relative',flexGrow:1}}>
+        <CSSTransition
+          key={location.key}
+          timeout={1000}
+          classNames="slideUp">
+          <Switch location={location}>
+            <Route path="/" exact>
+              <Redirect to="/home" />
+            </Route>
+            <Route path="/home">
+              <Home />
+            </Route>
+            <Route path="/algorithm">
+              <Algorithm />
+            </Route>
+            <Route path="/game">
+              <Game />
+            </Route>
+            <Route path="/stocks">
+              <Stocks />
+            </Route>
+            <Route path="/settings">
+              <Settings />
+            </Route>
+          </Switch>
+        </CSSTransition>
+      </TransitionGroup>
+      )} />
+    </main>
   );
 }
 
