@@ -46,7 +46,7 @@
 
 .form button {
     border: none;
-    background-color: blue;
+    background-color: #343fbb;
     padding: 10px;
     width: 30%;
     color: white;
@@ -55,10 +55,16 @@
     box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.507);
     margin-bottom: 20px;
     border-radius: 3px;
+    transition: 300ms ease-in-out;
 }
 
 .form button:hover {
     cursor: pointer;
+    background-color: #293191;
+}
+
+.form button:active {
+    background-color: #1c2266;
 }
 
 .form input {

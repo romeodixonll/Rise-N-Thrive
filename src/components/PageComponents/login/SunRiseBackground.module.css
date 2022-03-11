@@ -55,7 +55,7 @@ html {
       top: 70%;
     }
     100% {
-      top: 15%;
+      top: 30%;
     }
   }
   
@@ -92,7 +92,7 @@ html {
     border-left-color: transparent;
     border-bottom-color: transparent;
     transform: rotateZ(-75deg);
-    animation: move 25s linear infinite, flap .5s linear alternate infinite;
+    animation: move 25s linear infinite, flap 1s linear alternate infinite;
     z-index: 70;
   }
   
@@ -101,7 +101,7 @@ html {
     
     opacity: 1;
     top: 50px;
-    width: 30px;
+    width: 32.2px;
     height: 24px;
     border: 6px solid black;
     border-radius: 50%;
@@ -110,7 +110,7 @@ html {
     border-top-color: transparent;
     transform: rotateZ(75deg);
     margin: 0px 52px;
-    animation: move 25s linear infinite
+    animation: move 25s linear infinite, flap 1s linear alternate infinite;
   }
   
   
@@ -162,3 +162,17 @@ html {
       left: 100%;
     }
   }
+
+  
+@keyframes flap {
+  0% {
+    border-radius: 10%;
+  }
+  60% {
+    border-radius: 90%;
+  }
+  100% {
+    border-radius: 90%;
+  
+  }
+}
