@@ -11,6 +11,7 @@ import Algorithm from './pages/Algorithm';
 import Game from './pages/Game';
 import Stocks from './pages/Stocks';
 import Settings from './pages/Settings';
+import Login from './pages/Login';
 
 
 // import ColorContextProvider from './store/color-context';
@@ -20,6 +21,7 @@ function App() {
   const [, , theme] = useContext(ColorContext)
 
   return (
+    // <Login />
     <main
     className={classes.flex}
       style={{ backgroundColor: theme, transition: '300ms' }}>
