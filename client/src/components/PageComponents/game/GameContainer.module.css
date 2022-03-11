@@ -1,0 +1,29 @@
+.gameTab{
+    display: flex;
+}
+
+.container{
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 1rem;
+}
+
+.img{
+    margin: auto;
+    border-radius: 15px;
+}
+
+.title{
+    border-radius: 15px;
+    font-size: 2rem;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.mt1{
+    margin-top: 1rem;
+}
+
+.mb1{
+    margin-bottom: 1rem;
+}
