@@ -41,6 +41,33 @@ const resolvers = {
 
       return { token, user };
     },
+    addTask: async (parent, { userId, task }) => {
+      // console.log(typeof mongoose.Types.ObjectId(userId))
+      // console.log(mongoose.Types.ObjectId(userId))
+      const taskData = await User.findByIdAndUpdate(
+        { _id: userId },
+        { $addToSet: { tasks: { taskItem: task } } },
+        { new: true }
+      )
+      console.log(taskData)
+      return taskData
+    },
+    deleteTask: async (parent, { userId, taskId }) => {
+      const taskData = await User.findOneAndUpdate(
+        { _id: userId },
+        { $pull: { tasks: taskId } },
+        { new: true }
+      )
+      return userData
+    },
+    updateTask: async (parent, { taskId, taskItem, taskStatus }) => {
+      const userData = await Task.findOneAndUpdate(
+        { _id: taskId },
+        { taskItem: taskItem, taskStatus: taskStatus },
+        { new: true }
+      )
+      return userData
+    },
   },
 };
 
