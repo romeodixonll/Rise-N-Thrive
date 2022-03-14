@@ -7,8 +7,8 @@ const Login = (props) => {
             <div>
                 <h2>Welcome back!</h2>
                 <div className={classes.inputsColumn}>
-                    <input type="email" placeholder='Email' value={props.emailInput} onChange={(e)=>props.setEmailInput(e.target.value)}/>
-                    <input type="password" placeholder='Password' value={props.passwordInput} onChange={(e)=>props.setPasswordInput(e.target.value)} />
+                <input type="email" placeholder='Email' name="email" value={props.emailInput} onChange={props.setEmailInput}/>
+                <input type="password" placeholder='Password' name="password" value={props.passwordInput} onChange={props.setPasswordInput}/>
                 </div>
             </div>
             <button type="submit">Login</button>
