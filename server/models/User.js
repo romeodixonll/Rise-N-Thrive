@@ -23,6 +23,10 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  tasks: {
+    type: Schema.Types.ObjectId,
+    ref: 'Task'
+  }
 });
 
 userSchema.pre("save", async function (next) {

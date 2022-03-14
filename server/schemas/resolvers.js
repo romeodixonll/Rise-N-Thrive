@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User } = require("../models");
+const { User, Task } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -42,14 +42,17 @@ const resolvers = {
       return { token, user };
     },
     addTask: async (parent, { userId, task }) => {
-      // console.log(typeof mongoose.Types.ObjectId(userId))
+      console.log(userId)
+      console.log(task)
       // console.log(mongoose.Types.ObjectId(userId))
+
+      const createTask = await Task.create({ taskItem: task })
+      console.log(createTask)
       const taskData = await User.findByIdAndUpdate(
         { _id: userId },
-        { $addToSet: { tasks: { taskItem: task } } },
+        { $addToSet: { tasks: createTask._id } },
         { new: true }
       )
-      console.log(taskData)
       return taskData
     },
     deleteTask: async (parent, { userId, taskId }) => {
@@ -58,12 +61,17 @@ const resolvers = {
         { $pull: { tasks: taskId } },
         { new: true }
       )
-      return userData
+      const deleteTask = await Task.findByIdAndDelete(
+        { _id: taskId },
+        { new: true }
+      )
+      return taskData
     },
     updateTask: async (parent, { taskId, taskItem, taskStatus }) => {
-      const userData = await Task.findOneAndUpdate(
+      console.log(taskStatus)
+      const userData = await Task.findByIdAndUpdate(
         { _id: taskId },
-        { taskItem: taskItem, taskStatus: taskStatus },
+        { taskItem: taskItem, completed: taskStatus },
         { new: true }
       )
       return userData
