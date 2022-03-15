@@ -46,7 +46,8 @@ const resolvers = {
       if (!correctPw) {
         throw new AuthenticationError("Incorrect credentials");
       }
-
+      console.log("-----------------")
+      console.log(user)
       const token = signToken(user);
 
       return { token, user };

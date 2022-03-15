@@ -19,11 +19,13 @@ const Task = () => {
 
     
     const { loading, data } = useQuery(QUERY_TASKS)
+    console.log(data)
     const tasksArray = data?.allTasks.tasks || []
+    console.log(tasksArray) 
 
-    
-    const [tasks, setTasks] = useState([])
-    console.log(tasks)
+    const [tasks, setTasks] = useState(tasksArray)
+    useEffect(()=>{console.log(tasks)}, [data])
+
     const [addTask, { error }] = useMutation(ADD_TASK, {
         update(cache, { data: { addTask } }) {
             try {
