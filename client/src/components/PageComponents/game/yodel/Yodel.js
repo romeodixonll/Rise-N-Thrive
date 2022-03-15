@@ -14,6 +14,8 @@ const Yodel = () => {
     const [answer, setAnswer] = useState('MOPS');
     const [day, setDay] = useState(Date());
     const [winState, setWinState] = useState(false);
+    const [outcast, setOutcast] = useState([]);
+    const [editing, setEditing] = useState(false);
 
     const [resultBox, setResultBox] = useState([]);
 
@@ -70,8 +72,13 @@ const Yodel = () => {
 
         if(yodelCount === 4){
             setWinState(true);
-        } else if(currentRow === 8){
+        } else if(currentRow === 6){
             console.log(answer);
+        } else if(yodelCount === 0 && echoCount === 0){
+            // If all four letters are not included then put those letters into outcast array. These letters will have their keys darkened
+            inputArray.forEach(e => {
+                setOutcast(outcast => [...outcast, e]);
+            });
         }
     }
     
@@ -89,11 +96,24 @@ const Yodel = () => {
 
     return(
         <div className={classes.scene}>
-            <h1 className={classes.title} style={theme === "#393939" 
-                    ? { backgroundColor: `${textColor}52`, color: 'white' } 
-                    : { backgroundColor: `${textColor}99`, color: 'black' }}>
-                Yodel
-            </h1>
+            <div className={classes.head}>
+                <h1 className={classes.title} style={theme === "#393939" 
+                        ? { backgroundColor: `${textColor}52`, color: 'white' } 
+                        : { backgroundColor: `${textColor}99`, color: 'black' }}>
+                    Yodel
+                </h1>
+                {/* This button allows the user to enter 'edit' mode... when clicked the button visually looks pressed */}
+                <button className={classes.edit} onClick={()=>{editing ? setEditing(false) : setEditing(true)}} style={editing 
+                            ? { backgroundColor:'#1cd31c', boxShadow: 'inset 2px 2px 8px #0d3810', content: 'Editing'}
+                            : { backgroundColor: 'darkgreen', boxShadow: 'none', content: 'Edit' }}>
+
+                        {/* If the user is editing change button text to match this */}
+                        {editing ? 'Editing' : 'Edit'}
+                </button>
+            </div>
+
+
+
 
             {/* Word Boxes */}
             <div className={classes.container} style={theme === "#393939"
@@ -101,7 +121,7 @@ const Yodel = () => {
                     : { backgroundColor:'rgb(41, 41, 41, 0.20)', color: 'black'}}>
                 
                 {/* Word Row */}
-                {[0,1,2,3,4,5,6,7].map((row, rowIndex) =>(
+                {[0,1,2,3,4,5,6].map((row, rowIndex) =>(
                     <div className={classes.row} key={rowIndex}>
 
                         {/* Individual Word Box */}
@@ -114,13 +134,13 @@ const Yodel = () => {
                         {/* Results Columns */}
                         <div className={classes.results} key={`results-${rowIndex}`}>
                             <div className={classes.yodel} key={`yodel-${rowIndex}`} style={resultBox[rowIndex*2] > 0 
-                            ? { backgroundColor: '#248521', color: 'black' }
-                            : { backgroundColor:'#8c8f92', color: 'black'}}>
+                            ? { backgroundColor: '#248521'}
+                            : { backgroundColor:'#8c8f92'}}>
                                 {resultBox[rowIndex*2]}
                             </div>
                             <div className={classes.echo} key={`echo-${rowIndex}`} style={resultBox[rowIndex*2 + 1] > 0 
-                            ? { backgroundColor: '#ecf00c', color: 'black' }
-                            : { backgroundColor:'#8c8f92', color: 'black'}}>
+                            ? { backgroundColor: '#ecf00c'}
+                            : { backgroundColor:'#8c8f92'}}>
                                 {resultBox[rowIndex*2 + 1]}
                             </div>
                         </div>
@@ -128,7 +148,7 @@ const Yodel = () => {
                 ))}
             </div>
 
-            <Keyboard handleKeyPress={handleKeyPress}/>
+            <Keyboard outcast={outcast} editing={editing} handleKeyPress={handleKeyPress}/>
         </div>
     )
 }
