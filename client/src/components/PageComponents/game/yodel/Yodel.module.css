@@ -7,12 +7,25 @@
     align-items: center;
 }
 
+.head{
+    display: flex;
+}
+
 .title{
     border-radius: 15px;
     font-size: 2rem;
     text-align: center;
     padding: 1rem;
     margin-bottom: 1rem;
+}
+
+.edit{
+    position: absolute;
+    font-size: 1rem;
+    top: 30px;
+    right: 5vw;
+    padding: 0.5rem 1rem;
+    background-color: darkgreen;
 }
 
 .container{

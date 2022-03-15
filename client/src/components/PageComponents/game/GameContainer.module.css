@@ -11,6 +11,8 @@
 .img{
     margin: auto;
     border-radius: 15px;
+    width: 25vw;
+    height: 25vw;
 }
 
 .title{

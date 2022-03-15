@@ -17,8 +17,12 @@ button{
     border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
-    background: #91928c;
+    background: #928d8c;
     padding: 22px 18px;
     border: none;
     text-transform: uppercase;
 }
+
+/* .test{
+background-color: rgb(216, 84, 75);
+} */
