@@ -23,6 +23,7 @@ const TaskList = (props) => {
     let keyDownEvent = () => {
         clearTimeout(typingTimer)
     }
+    console.log(props.tasks)
 
     return (
         <ul className={classes.ul}>

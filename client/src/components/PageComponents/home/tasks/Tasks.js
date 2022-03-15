@@ -18,16 +18,14 @@ const Task = () => {
     const [, , theme] = useContext(ColorContext)
 
     const { loading, err, data } = useQuery(QUERY_TASKS)
-    const tasksArray = data?.tasks || []
-    console.log(data)
-
-    const [tasks, setTasks] = useState(tasksArray)
+    const tasksArray = data?.allTasks.tasks || []
+    console.log(tasksArray)
+    const [tasks, setTasks] = useState([])
 
     const [addTask, { error }] = useMutation(ADD_TASK, {
         update(cache, { data: { addTask } }) {
             try {
                 const { tasks } = cache.readQuery({ query: QUERY_TASKS });
-
                 cache.writeQuery({
                     query: QUERY_TASKS,
                     data: { tasks: [tasks, addTask] }
