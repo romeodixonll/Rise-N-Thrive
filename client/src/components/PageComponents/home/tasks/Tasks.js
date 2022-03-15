@@ -2,43 +2,55 @@ import { useContext, useState } from 'react'
 
 import classes from './Tasks.module.css'
 
+import { useMutation } from '@apollo/client'
+import { useQuery } from '@apollo/client'
+import { ADD_TASK } from '../../../utils/mutations'
+import { QUERY_TASKS } from '../../../utils/queries'
+
 import Card from '../../../UI/Card'
 import TaskList from './TaskList'
 import { ColorContext } from '../../../../store/color-context'
 
-const dummyTasks = [
-    {
-        id:0,
-        task: 'Make bed',
-        finished: false,
-    },
-    {
-        id:1,
-        task: 'Run for 15 minutes',
-        finished: false,
-    },
-    {
-        id:2,
-        task: 'Eat',
-        finished: false,
-    },
-    {
-        id:3,
-        task: 'Pet Chaco',
-        finished: false,
-    }
-]
-
-let nextid = dummyTasks[dummyTasks.length - 1].id
+import Auth from '../../../utils/auth'
 
 const Task = () => {
-    const [tasks, setTasks] = useState(dummyTasks)
     const [deleteActive, setDeleteActive] = useState(false)
-    const [ , ,theme] = useContext(ColorContext)
-    const addTaskHandler = () => {
-        setTasks([...tasks, {id:nextid,task:'Double Click to Edit',finished:false}])
-        nextid++
-        
+    const [, , theme] = useContext(ColorContext)
+
+    const { loading, err, data } = useQuery(QUERY_TASKS)
+    const tasksArray = data?.tasks || []
+    console.log(data)
+
+    const [tasks, setTasks] = useState(tasksArray)
+
+    const [addTask, { error }] = useMutation(ADD_TASK, {
+        update(cache, { data: { addTask } }) {
+            try {
+                const { tasks } = cache.readQuery({ query: QUERY_TASKS });
+
+                cache.writeQuery({
+                    query: QUERY_TASKS,
+                    data: { tasks: [tasks, addTask] }
+                })
+            } catch (err) {
+                console.error(err)
+            }
+        }
+    })
+
+    const addTaskHandler = async () => {
+        console.log('adding')
+        try {
+            const { data } = await addTask({
+                variables: {
+                    task: 'Double click to edit',
+                    userId: Auth.getProfile().data._id
+                }
+            })
+            console.log(data)
+        } catch (err) {
+            console.error(err)
+        }
     }
 
     const deleteModeHandler = () => {
@@ -65,24 +77,24 @@ const Task = () => {
     }
 
     return <Card className={classes.card} style={theme === "#393939"
-    ? { backgroundColor: 'rgb(41, 41, 41)', color: 'white' }
-    : { backgroundColor:'rgb(41, 41, 41, 0.20)', color: 'black'}}>
+        ? { backgroundColor: 'rgb(41, 41, 41)', color: 'white' }
+        : { backgroundColor: 'rgb(41, 41, 41, 0.20)', color: 'black' }}>
         <h2>Did you...</h2>
-        <TaskList 
-        tasks={tasks} 
-        deleteActive={deleteActive} 
-        deleteTask={deleteTask} 
-        updateTaskStatus={updateTaskStatus}
-        updateTaskName={updateTaskName}
+        <TaskList
+            tasks={tasks}
+            deleteActive={deleteActive}
+            deleteTask={deleteTask}
+            updateTaskStatus={updateTaskStatus}
+            updateTaskName={updateTaskName}
         />
         <div className={classes.taskButtons} >
-            <button 
-            onClick={addTaskHandler}
-            style={theme=="#393939" ? {color:'white'} : {color:'black'}}
+            <button
+                onClick={addTaskHandler}
+                style={theme == "#393939" ? { color: 'white' } : { color: 'black' }}
             >add task</button>
-            <button 
-            onClick={deleteModeHandler}
-            style={theme=="#393939" ? {color:'white'} : {color:'red'}}
+            <button
+                onClick={deleteModeHandler}
+                style={theme == "#393939" ? { color: 'white' } : { color: 'red' }}
             >delete task</button>
         </div>
     </Card>

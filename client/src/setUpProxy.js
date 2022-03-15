@@ -6,6 +6,10 @@ module.exports = function(app) {
     createProxyMiddleware({
       target: 'http://localhost:3001',
       changeOrigin: true,
+      headers: {
+        "Connection": "keep-alive",
+      },
+      followRedirects: true,
     })
   );
 };

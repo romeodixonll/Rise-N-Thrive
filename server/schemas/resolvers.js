@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Task } = require("../models");
+const { User, Task} = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -11,11 +11,21 @@ const resolvers = {
       return User.findOne({ username });
     },
     me: async (parent, args, context) => {
+      console.log(context.user)
       if (context.user) {
         return User.findOne({ _id: context.user._id });
       }
       throw new AuthenticationError("You need to be logged in!");
     },
+    allTasks: async (parent, args, context) => {
+      console.log(context.user)
+      if (context.user) {
+        let s =  await User.findById({_id: context.user._id}).populate('tasks')
+        console.log(s)
+        return s
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    }
   },
 
   Mutation: {
@@ -41,16 +51,12 @@ const resolvers = {
 
       return { token, user };
     },
-    addTask: async (parent, { userId, task }) => {
-      console.log(userId)
-      console.log(task)
-      // console.log(mongoose.Types.ObjectId(userId))
+    addTask: async (parent, args, context) => {
 
-      const createTask = await Task.create({ taskItem: task })
-      console.log(createTask)
+      const createTask = await Task.create({ taskItem: "Double Click to Edit" })
       const taskData = await User.findByIdAndUpdate(
-        { _id: userId },
-        { $addToSet: { tasks: createTask._id } },
+        { _id: context.user._id },
+        { $addToSet: { tasks: createTask } },
         { new: true }
       )
       return taskData

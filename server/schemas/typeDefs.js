@@ -24,12 +24,13 @@ type Query {
   users: [User]
   user(username: String!): User
   me: User
+  allTasks: User
 }
 
 type Mutation {
   addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
   login(email: String!, password: String!): Auth
-  addTask(userId: ID!, task:String!): Task
+  addTask(task:String!): Task
   deleteTask(userId: ID!, taskId: ID!): Task
   updateTask(taskId: ID!, taskItem: String, taskStatus: Boolean): Task
 }

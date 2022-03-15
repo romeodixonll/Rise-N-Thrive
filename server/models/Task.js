@@ -5,6 +5,7 @@ const taskSchema = new Schema({
     type: String,
     required: true,
     trim: true,
+    default:'Double Click to Edit'
   },
   completed: {
     type: Boolean,
