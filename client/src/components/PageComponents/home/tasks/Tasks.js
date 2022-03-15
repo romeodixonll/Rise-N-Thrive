@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
 import classes from './Tasks.module.css'
 
@@ -17,11 +17,15 @@ const Task = () => {
     const [deleteActive, setDeleteActive] = useState(false)
     const [, , theme] = useContext(ColorContext)
 
-    const { loading, err, data } = useQuery(QUERY_TASKS)
+    
+    const { loading, data } = useQuery(QUERY_TASKS)
+    console.log(data)
     const tasksArray = data?.allTasks.tasks || []
-    console.log(tasksArray)
-    const [tasks, setTasks] = useState([])
+    console.log(tasksArray) 
 
+    
+    const [tasks, setTasks] = useState([])
+    console.log(tasks)
     const [addTask, { error }] = useMutation(ADD_TASK, {
         update(cache, { data: { addTask } }) {
             try {
