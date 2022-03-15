@@ -19,20 +19,30 @@ const Task = () => {
 
     
     const { loading, data } = useQuery(QUERY_TASKS)
-    console.log(data)
     const tasksArray = data?.allTasks.tasks || []
     console.log(tasksArray) 
 
-    const [tasks, setTasks] = useState(tasksArray)
-    useEffect(()=>{console.log(tasks)}, [data])
+    const [tasks, setTasks] = useState([])
 
+    useEffect(() => {
+        if(loading) {
+            console.log('loading')
+        } else {
+
+        setTasks(tasksArray)
+    }
+
+    })
+    
     const [addTask, { error }] = useMutation(ADD_TASK, {
         update(cache, { data: { addTask } }) {
             try {
-                const { tasks } = cache.readQuery({ query: QUERY_TASKS });
+                const { allTasks } = cache.readQuery({ query: QUERY_TASKS });
+                const tasks = allTasks.tasks;
+                console.log(tasks)
                 cache.writeQuery({
                     query: QUERY_TASKS,
-                    data: { tasks: [tasks, addTask] }
+                    data: { allTasks: [addTask, ...tasks ] }
                 })
             } catch (err) {
                 console.error(err)
