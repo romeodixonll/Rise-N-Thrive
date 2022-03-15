@@ -23,24 +23,25 @@ const TaskList = (props) => {
     let keyDownEvent = () => {
         clearTimeout(typingTimer)
     }
+    console.log(props.tasks)
 
     return (
         <ul className={classes.ul}>
-            {props.tasks.map((task, i) => <li key={i}>
+            {props.tasks.map((task, i) => <li key={task._id}>
                 <div>
                     <input
                         type='checkbox'
-                        id={task.id}
-                        checked={task.finished}
-                        onChange={() => props.updateTaskStatus(task.id)}
+                        id={task._id}
+                        checked={task.completed}
+                        onChange={() => props.updateTaskStatus(task._id)}
                         onKeyPress={keyUpEvent}
                         onKeyDown={keyDownEvent}
                         tabIndex="0"
                     />
                     <label
-                        id={task.id}
+                        id={task._id}
                         onClick={enableEditingHandler}
-                    >{task.task}
+                    >{task.taskItem}
                     </label>
                 </div>
                 {props.deleteActive && <button onClick={() => props.deleteTask(task.id)}>

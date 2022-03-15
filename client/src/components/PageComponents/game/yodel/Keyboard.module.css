@@ -1,0 +1,24 @@
+.keyboard{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.row{
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+button{
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    background: #91928c;
+    padding: 22px 18px;
+    border: none;
+    text-transform: uppercase;
+}

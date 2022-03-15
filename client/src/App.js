@@ -16,7 +16,11 @@ import Game from "./pages/Game";
 import Stocks from "./pages/Stocks";
 import Settings from "./pages/Settings";
 import Login from "./pages/Login";
+
 import Indecision from "./pages/Indecision";
+
+import Yodel from './components/PageComponents/game/yodel/Yodel'
+
 
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import "./App.css";
@@ -52,6 +56,7 @@ function App() {
   const [, , theme] = useContext(ColorContext);
 
   return (
+
     <div>
       {!token ? (
         <ApolloProvider client={client}>
@@ -95,6 +100,9 @@ function App() {
                     </Route>
                     <Route path="/settings" exact>
                       <Settings />
+                    </Route>
+                    <Route path="/yodel" exact>
+                      <Yodel />
                     </Route>
                   </Switch>
                 </CSSTransition>

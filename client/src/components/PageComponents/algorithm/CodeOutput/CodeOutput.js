@@ -5,15 +5,21 @@ import classes from './CodeOutput.module.css'
 import Card from '../../../UI/Card';
 import { ColorContext } from '../../../../store/color-context'
 
-const CodeOutput = () => {
+const CodeOutput = ({srcDoc}) => {
     const [textColor, , theme] = useContext(ColorContext)
     return <Card className={classes.card}
         style={theme === "#393939"
             ? { backgroundColor: `${textColor}52`, color: 'white' }
             : { backgroundColor: `${textColor}99`, color: 'black' }}>
         <div>
-            <h3>Your Output</h3>
-            <p>[1, 1]</p>
+            <iframe
+                srcDoc={srcDoc}
+                title="output"
+                sandbox='allow-scripts'
+                frameBorder="0"
+                width="100%"
+                height="100%"
+            ></iframe>
         </div>
         <hr />
         <div>

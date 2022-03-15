@@ -15,7 +15,7 @@ const games = [
     {
         title: 'Yodel',
         img: penguinImg,
-        href: '/penguin-game/scene.html',
+        href: '/yodel',
         unique: 'Average Tries: ',
         stat: 6 
     }
