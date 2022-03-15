@@ -1,5 +1,5 @@
 import {useState, useContext} from 'react'
-
+import Auth from "../components/utils/auth"
 import classes from './Settings.module.css';
 
 import { ColorContext } from '../store/color-context';
@@ -39,7 +39,7 @@ const Settings = () => {
             </div>
         </div>
         <div className={classes.logoutButtons}>
-            <button>Logout</button>
+            <button onClick={() => Auth.logout()}>Logout</button>
             <button>Delete Account</button>
         </div>
     </div>
