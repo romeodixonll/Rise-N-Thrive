@@ -12,6 +12,7 @@ import Game from './pages/Game';
 import Stocks from './pages/Stocks';
 import Settings from './pages/Settings';
 import Login from './pages/Login';
+import Yodel from './components/PageComponents/game/yodel/Yodel'
 
 
 // import ColorContextProvider from './store/color-context';
@@ -50,6 +51,9 @@ function App() {
             </Route>
             <Route path="/settings" exact>
               <Settings />
+            </Route>
+            <Route path="/yodel" exact>
+              <Yodel />
             </Route>
           </Switch>
         </CSSTransition>
