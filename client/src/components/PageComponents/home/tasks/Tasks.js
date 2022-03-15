@@ -19,9 +19,7 @@ const Task = () => {
 
     
     const { loading, data } = useQuery(QUERY_TASKS)
-    console.log(data)
     const tasksArray = data?.allTasks.tasks || []
-    console.log(tasksArray) 
 
     
     const [tasks, setTasks] = useState([])
@@ -82,6 +80,8 @@ const Task = () => {
         ? { backgroundColor: 'rgb(41, 41, 41)', color: 'white' }
         : { backgroundColor: 'rgb(41, 41, 41, 0.20)', color: 'black' }}>
         <h2>Did you...</h2>
+        {loading ? 
+        <div></div> :
         <TaskList
             tasks={tasks}
             deleteActive={deleteActive}
@@ -89,6 +89,7 @@ const Task = () => {
             updateTaskStatus={updateTaskStatus}
             updateTaskName={updateTaskName}
         />
+        }
         <div className={classes.taskButtons} >
             <button
                 onClick={addTaskHandler}

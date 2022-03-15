@@ -7,6 +7,7 @@ import algoBlack from '../../assets/images/nav-images/algorithm-black.png';
 import gameBlack from '../../assets/images/nav-images/game-black.png';
 import stockBlack from '../../assets/images/nav-images/crypto-black.png';
 import settingBlack from '../../assets/images/nav-images/settings-black.png';
+import questionMarkBlack from '../../assets/images/nav-images/question-mark.png'
 import homeWhite from '../../assets/images/nav-images/home-white.png';
 import algoWhite from '../../assets/images/nav-images/algorithm-white.png';
 import gameWhite from '../../assets/images/nav-images/game-white.png';
@@ -17,7 +18,7 @@ import algoGrey from '../../assets/images/nav-images/algorithm-grey.png';
 import gameGrey from '../../assets/images/nav-images/game-grey.png';
 import stockGrey from '../../assets/images/nav-images/crypto-grey.png';
 import settingGrey from '../../assets/images/nav-images/settings-grey.png';
-import questionMark from '../../assets/images/nav-images/question-mark.png'
+import questionMarkGrey from '../../assets/images/nav-images/question-mark-grey.png'
 
 import classes from './NavTabs.module.css'
 
@@ -118,7 +119,7 @@ const NavTabs = () => {
                     <div className={classes.flex}>
                         <img
                             className={classes.logo}
-                            src={theme === "#393939" ? questionMark : questionMark}
+                            src={theme === "#393939" ? questionMarkGrey : questionMarkBlack}
                             alt="indecision logo" />
                         <p style={theme === "#393939" ? {color:'white'} : {color:'black'}}>IndecisionApp</p>
                     </div>
