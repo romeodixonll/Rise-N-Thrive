@@ -7,6 +7,7 @@ import Algorithm from '../../pages/Algorithm';
 import Game from '../../pages/Game';
 import Stocks from '../../pages/Stocks';
 import Settings from './settings/Settings';
+import Indecision from '../../pages/Indecision';
 
 let animationTiming = {
   enter:400,
@@ -28,6 +29,9 @@ const Pages = ({ currentPage }) => {
     };
     if (currentPage === 'Stocks') {
       return <Stocks />;
+    };
+    if (currentPage === 'Indecision') {
+      return <Indecision />;
     };
     if (currentPage === 'Settings') {
       return <Settings />;

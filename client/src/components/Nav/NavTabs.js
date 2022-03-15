@@ -17,6 +17,7 @@ import algoGrey from '../../assets/images/nav-images/algorithm-grey.png';
 import gameGrey from '../../assets/images/nav-images/game-grey.png';
 import stockGrey from '../../assets/images/nav-images/crypto-grey.png';
 import settingGrey from '../../assets/images/nav-images/settings-grey.png';
+import questionMark from '../../assets/images/nav-images/question-mark.png'
 
 import classes from './NavTabs.module.css'
 
@@ -107,6 +108,19 @@ const NavTabs = () => {
                             src={theme === "#393939" ? stockGrey : stockBlack}
                             alt="crypto logo" />
                         <p style={theme === "#393939" ? {color:'white'} : {color:'black'}}>Stocks</p>
+                    </div>
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                onClick={handleNavClick}
+                    to="/indecision">
+                    <div className={classes.flex}>
+                        <img
+                            className={classes.logo}
+                            src={theme === "#393939" ? questionMark : questionMark}
+                            alt="indecision logo" />
+                        <p style={theme === "#393939" ? {color:'white'} : {color:'black'}}>IndecisionApp</p>
                     </div>
                 </NavLink>
             </li>
