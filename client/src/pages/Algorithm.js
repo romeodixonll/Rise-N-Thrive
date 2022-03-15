@@ -9,31 +9,39 @@ import CodeOutput from '../components/PageComponents/algorithm/CodeOutput/CodeOu
 import Instructions from '../components/PageComponents/algorithm/Instructions/Instructions';
 
 const Algorithm = () => {
-    const [code, setCode] = useState('');
-    const [correct, setCorrect] = useState(false);
-    const [isLoading, setIsLoading] = useState(false)
+    const [code, setCode] = useState(`let userOutputEl = document.getElementById("userOutput");\n\n// insert code below\nconst plusOne = () => {}\n\nuserOutputEl.textContent = plusOne();`);
+
+    const srcDoc = `
+    <html>
+    <body>
+    <h2>Your Output</h2>
+    <p id="userOutput"></p>
+    </body>
+    <script>${code}</script>
+    </html>
+    `
 
     return <div className={`${classes.flex} page`} style={{ height: '94vh' }}>
-        <div className={classes.flex_column}>
-            <div className={classes.row1}>
-                <div className={classes.column1}>
-                    <TextEditor
-                        value={code}
-                        onChange={setCode}
-                    />
-                    <div className={classes.row3}>
-                        <button>RUN</button>
-                        <p>INCORRECT</p>
-                    </div>
+    <div className={classes.flex_column}>
+        <div className={classes.row1}>
+            <div className={classes.column1}>
+                <TextEditor
+                    value={code}
+                    onChange={setCode}
+                />
+                <div className={classes.row3}>
+                    <button>MARK COMPLETED</button>
+                    <p>RESET CODE</p>
                 </div>
-                <Instructions />
             </div>
-            <div className={classes.row2}>
-                <CodeOutput />
-                <CompletionHistory />
-            </div>
+            <Instructions />
+        </div>
+        <div className={classes.row2}>
+            <CodeOutput srcDoc={srcDoc}/>
+            <CompletionHistory />
         </div>
     </div>
+</div>
 }
 
 export default Algorithm
