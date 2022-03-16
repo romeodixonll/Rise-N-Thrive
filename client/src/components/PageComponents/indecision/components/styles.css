@@ -148,7 +148,7 @@ margin: 0;
   display: flex;
   justify-content: space-between;
   padding:3.2rem 1.6rem;
-  border-bottom: 1px solid lighten(#464b5e, 10%);
+  border-bottom: 1px solid #838aa7;
 }
 
 .option__text{
@@ -166,7 +166,7 @@ margin: 0;
 }
 
 .widget__message{
-    border-bottom: 1px solid lighten(#464b5e, 10%);
+    border-bottom: 1px solid #838aa7;
     color:#a5afd7;
     margin: 0;
     padding:3.2rem;
