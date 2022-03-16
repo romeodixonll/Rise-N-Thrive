@@ -23,7 +23,6 @@ const TaskList = (props) => {
     let keyDownEvent = () => {
         clearTimeout(typingTimer)
     }
-    console.log(props.tasks)
 
     return (
         <ul className={classes.ul}>
@@ -32,7 +31,7 @@ const TaskList = (props) => {
                     <input
                         type='checkbox'
                         id={task._id}
-                        checked={task.completed}
+                        // checked={task.completed}
                         onChange={() => props.updateTaskStatus(task._id)}
                         onKeyPress={keyUpEvent}
                         onKeyDown={keyDownEvent}

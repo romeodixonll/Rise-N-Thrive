@@ -6,6 +6,7 @@ import { useMutation } from '@apollo/client'
 import { useQuery } from '@apollo/client'
 import { ADD_TASK } from '../../../utils/mutations'
 import { QUERY_TASKS } from '../../../utils/queries'
+import { UPDATE_TASK } from '../../../utils/mutations'
 
 import Card from '../../../UI/Card'
 import TaskList from './TaskList'
@@ -16,23 +17,32 @@ import Auth from '../../../utils/auth'
 const Task = () => {
     const [deleteActive, setDeleteActive] = useState(false)
     const [, , theme] = useContext(ColorContext)
-
+    const [updateTask, {err}] = useMutation(UPDATE_TASK)
     
     const { loading, data } = useQuery(QUERY_TASKS)
-    console.log(data)
     const tasksArray = data?.allTasks.tasks || []
-    console.log(tasksArray) 
 
-    const [tasks, setTasks] = useState(tasksArray)
-    useEffect(()=>{console.log(tasks)}, [data])
+    const [tasks, setTasks] = useState([])
 
+    useEffect(() => {
+        if(loading) {
+            console.log('loading')
+        } else {
+
+        setTasks(tasksArray)
+    }
+
+    })
+    
     const [addTask, { error }] = useMutation(ADD_TASK, {
         update(cache, { data: { addTask } }) {
             try {
-                const { tasks } = cache.readQuery({ query: QUERY_TASKS });
+                const { allTasks } = cache.readQuery({ query: QUERY_TASKS });
+                const tasks = allTasks.tasks;
+                console.log(tasks)
                 cache.writeQuery({
                     query: QUERY_TASKS,
-                    data: { tasks: [tasks, addTask] }
+                    data: { allTasks: [addTask, ...tasks ] }
                 })
             } catch (err) {
                 console.error(err)
@@ -65,10 +75,23 @@ const Task = () => {
     }
 
     const updateTaskStatus = (id) => {
-        let updatedTaskList = [...tasks]
-        let taskIndex = updatedTaskList.findIndex((task => task.id == id))
-        updatedTaskList[taskIndex].finished = !updatedTaskList[taskIndex].finished
+        let updatedTaskList = tasks
+        console.log(updatedTaskList)
+        let taskIndex = updatedTaskList.findIndex((task => task._id == id))
+        updatedTaskList[taskIndex].completed = !updatedTaskList[taskIndex].completed
         setTasks(updatedTaskList)
+        // try {
+        //     const { data } = updateTask({
+        //         variables: {
+        //             taskId: id,
+        //             taskItem: 'test',
+        //             completed: true,
+        //         }
+        //     })
+        //     console.log(data)
+        // } catch (err) {
+        //     console.log(error)
+        // }
     }
 
     const updateTaskName = (id, value) => {
