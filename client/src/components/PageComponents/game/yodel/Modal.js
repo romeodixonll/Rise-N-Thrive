@@ -96,20 +96,20 @@ const Modal = ({ answer, currentRow, winState, lossState, informationState, refr
 
                         {/* Examples */}
                         <h3 className={classes.example}>Example: If we guess 'DENS' when the answer is 'MADE' the 'D' and 'E' each give an echo.</h3>
-                        <img src={echo2} alt='2 Echoes Example'/>
+                        <img className={classes.img} src={echo2} alt='2 Echoes Example'/>
                         <h3 className={classes.example}>Additionally, the 'D' and 'E' in 'TIDE' will each give a yodel.</h3>
-                        <img src={yodel2} alt='2 Yodels Example' />
+                        <img className={classes.img} src={yodel2} alt='2 Yodels Example' />
                         <h3 className={classes.example}>With 'DAME' both 'D' and 'M' give echoes, while 'A' and 'E' give yodels</h3>
-                        <img src={echoYodel} alt='Mix of Yodels and Echoes Example' />
+                        <img className={classes.img} src={echoYodel} alt='Mix of Yodels and Echoes Example' />
                         <h3 className={classes.example}>Finally when you guess the correct word 'MADE' you get 4 yodels</h3>
-                        <img src={solvedYodel} alt='Solved Yodel Example' />
+                        <img className={classes.img} src={solvedYodel} alt='Solved Yodel Example' />
 
 
                         
                         
 
-                        <div className={classes.button}>
-                            <button type="button" style={{backgroundColor: 'darkgreen', fontSize: '1.25rem'}} onClick={informationOff}>Play Yodel</button>
+                        <div className={classes.playButton}>
+                            <button className={classes.button} type="button" style={{backgroundColor: 'darkgreen', fontSize: '1.25rem'}} onClick={informationOff}>Play Yodel</button>
                         </div>
                     </div>
                 </div> 

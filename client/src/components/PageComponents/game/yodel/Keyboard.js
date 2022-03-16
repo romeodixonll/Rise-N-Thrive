@@ -78,7 +78,7 @@ const Keyboard = ({ outcast, editing, handleKeyPress, refreshKeys, keyRefresh}) 
 
                         {/* Each key is a button added into a row */}
                         {item.map((character, charIndex) => (
-                            <button key={charIndex} value={itemIndex === 0 ? charIndex : itemIndex === 1 ? (10 + charIndex) : (19 + charIndex)} onClick={(e)=>{editing ? editKey(e) : handleKeyPress(character)}}
+                            <button className={classes.button} key={charIndex} value={itemIndex === 0 ? charIndex : itemIndex === 1 ? (10 + charIndex) : (19 + charIndex)} onClick={(e)=>{editing ? editKey(e) : handleKeyPress(character)}}
                             style={outcast.includes(character) ? { backgroundColor: '#2c2c2c', color: 'black' }
                             : { backgroundColor: buttonBackground[itemIndex === 0 ? charIndex : itemIndex === 1 ? (10 + charIndex) : (19 + charIndex)]}}>
                                 {character}
