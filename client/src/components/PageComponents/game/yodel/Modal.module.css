@@ -1,0 +1,63 @@
+.modal{
+    display: block;
+    opacity: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 15px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -35%);
+    width: 75%;
+    box-shadow:black 4px 4px 10px;
+}
+
+.innerModal{
+    background-color: var(--gray);
+    border-radius: 15px;
+    padding: 0.25rem 1rem;
+}
+
+.title{
+    font-size: 3rem;;
+    background-color: var(--blue);
+    border-radius: 15px;
+    margin: 0.5rem auto;
+    padding: 0.75rem;
+    width: 65%;
+}
+
+.subtitle{
+    font-style: italic;
+    margin-top: 0.75rem;
+}
+
+.dialog{
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    margin-top: 2rem;
+}
+
+.buttonDiv{
+    display: flex;
+}
+
+.button{
+    width: 50%;
+    margin: auto;
+}
+
+.instructions{
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.example{
+    font-size: 1.25rem;
+    margin: 0.75rem 0;
+}
+
+img{
+    width: 50%;
+    margin-bottom: 1rem;
+}

@@ -2,8 +2,8 @@ import { useContext } from 'react';
 import classes from './GameList.module.css';
 import { ColorContext } from '../../../store/color-context';
 import GameContainer from './GameContainer';
-import penguinImg from '../../../assets/images/game-images/penguin-game.png';
-import yodelImg from '../../../assets/images/game-images/yodel.png';
+import penguinImg from '../../../assets/images/game-images/penguin/penguin-game.png';
+import yodelImg from '../../../assets/images/game-images/yodel/yodel.png';
 
 
 const games = [
