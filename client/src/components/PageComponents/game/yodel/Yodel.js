@@ -131,14 +131,14 @@ const Yodel = () => {
                 </h1>
 
                 <div className={classes.buttonDiv}>
-                    <button className={classes.information} onClick={() => setInformationState(true)} style={theme === "#393939" 
+                    <button className={`${classes.information} ${classes.button}`} onClick={() => setInformationState(true)} style={theme === "#393939" 
                         ? { backgroundColor: `${textColor}52`, color: 'white' } 
                         : { backgroundColor: `${textColor}99`, color: 'black' }}>
                     ?
                     </button>
 
                     {/* This button allows the user to enter 'edit' mode... when clicked the button visually looks pressed */}
-                    <button className={classes.edit} onClick={()=>{editing ? setEditing(false) : setEditing(true)}} style={editing 
+                    <button className={`${classes.edit} ${classes.button}`} onClick={()=>{editing ? setEditing(false) : setEditing(true)}} style={editing 
                                 ? { backgroundColor:'#1cd31c', boxShadow: 'inset 2px 2px 8px #0d3810', content: 'Editing'}
                                 : { backgroundColor: 'darkgreen', boxShadow: 'none', content: 'Edit' }}>
 
@@ -183,7 +183,7 @@ const Yodel = () => {
 
             <Keyboard outcast={outcast} editing={editing} handleKeyPress={handleKeyPress} keyRefresh={keyRefresh} refreshKeys={refreshKeys} />
             
-            <button className={classes.refresh} onClick={refresh} style={(winState || lossState) ? {display: 'block'} : {display: 'none'}}>Play Again</button>
+            <button className={`${classes.refresh} ${classes.button}`} onClick={refresh} style={(winState || lossState) ? {display: 'block'} : {display: 'none'}}>Play Again</button>
 
             <Modal answer={answer} currentRow={currentRow} winState={winState} lossState={lossState} informationState={informationState} refresh={refresh} informationOff={informationOff}/>
         </div>
