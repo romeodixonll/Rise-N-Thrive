@@ -1,6 +1,9 @@
 .box{
-  transform: translate(500px,10px);
-  max-width: 60rem;
+  /* transform: translate(500px,10px); */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width:65%;
 }
 
 html{
@@ -24,7 +27,7 @@ button:disabled{
 }
 
 .container{
-  max-width: 60rem;
+  /* max-width: 60rem; */
   margin:0 auto;
   padding:0 1.6rem
   
