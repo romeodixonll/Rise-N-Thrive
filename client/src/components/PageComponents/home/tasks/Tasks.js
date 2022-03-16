@@ -6,6 +6,7 @@ import { useMutation } from '@apollo/client'
 import { useQuery } from '@apollo/client'
 import { ADD_TASK } from '../../../utils/mutations'
 import { QUERY_TASKS } from '../../../utils/queries'
+import { UPDATE_TASK } from '../../../utils/mutations'
 
 import Card from '../../../UI/Card'
 import TaskList from './TaskList'
@@ -16,11 +17,10 @@ import Auth from '../../../utils/auth'
 const Task = () => {
     const [deleteActive, setDeleteActive] = useState(false)
     const [, , theme] = useContext(ColorContext)
-
+    const [updateTask, {err}] = useMutation(UPDATE_TASK)
     
     const { loading, data } = useQuery(QUERY_TASKS)
     const tasksArray = data?.allTasks.tasks || []
-    console.log(tasksArray) 
 
     const [tasks, setTasks] = useState([])
 
@@ -75,10 +75,23 @@ const Task = () => {
     }
 
     const updateTaskStatus = (id) => {
-        let updatedTaskList = [...tasks]
-        let taskIndex = updatedTaskList.findIndex((task => task.id == id))
-        updatedTaskList[taskIndex].finished = !updatedTaskList[taskIndex].finished
+        let updatedTaskList = tasks
+        console.log(updatedTaskList)
+        let taskIndex = updatedTaskList.findIndex((task => task._id == id))
+        updatedTaskList[taskIndex].completed = !updatedTaskList[taskIndex].completed
         setTasks(updatedTaskList)
+        // try {
+        //     const { data } = updateTask({
+        //         variables: {
+        //             taskId: id,
+        //             taskItem: 'test',
+        //             completed: true,
+        //         }
+        //     })
+        //     console.log(data)
+        // } catch (err) {
+        //     console.log(error)
+        // }
     }
 
     const updateTaskName = (id, value) => {

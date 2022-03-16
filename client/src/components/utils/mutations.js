@@ -44,3 +44,13 @@ export const ADD_TASK = gql`
     }
   }
 `
+
+export const UPDATE_TASK = gql`
+mutation Mutation($taskId: ID!, $taskItem: String, $taskStatus: Boolean) {
+  updateTask(taskId: $taskId, taskItem: $taskItem, taskStatus: $taskStatus) {
+    _id
+    taskItem
+    completed
+  }
+}
+`
