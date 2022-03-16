@@ -16,12 +16,17 @@ import Game from "./pages/Game";
 import Stocks from "./pages/Stocks";
 import Settings from "./pages/Settings";
 import Login from "./pages/Login";
+
+import Indecision from "./pages/Indecision";
+
 import Yodel from './components/PageComponents/game/yodel/Yodel'
+
 
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import "./App.css";
 // import ColorContextProvider from './store/color-context';
 import { ColorContext } from "./store/color-context";
+
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -89,6 +94,9 @@ function App() {
                     </Route>
                     <Route path="/stocks" exact>
                       <Stocks />
+                    </Route>
+                    <Route path="/indecision" exact>
+                      <Indecision />
                     </Route>
                     <Route path="/settings" exact>
                       <Settings />

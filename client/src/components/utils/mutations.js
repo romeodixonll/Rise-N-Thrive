@@ -33,3 +33,14 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+
+export const ADD_TASK = gql`
+  mutation AddTask($task: String!) {
+    addTask(task: $task) {
+      _id
+      taskItem
+      completed
+    }
+  }
+`
