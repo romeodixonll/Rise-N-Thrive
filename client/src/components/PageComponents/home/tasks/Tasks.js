@@ -23,9 +23,9 @@ const Task = () => {
     const tasksArray = data?.allTasks.tasks || []
     console.log(tasksArray) 
 
-    
-    const [tasks, setTasks] = useState([])
-    console.log(tasks)
+    const [tasks, setTasks] = useState(tasksArray)
+    useEffect(()=>{console.log(tasks)}, [data])
+
     const [addTask, { error }] = useMutation(ADD_TASK, {
         update(cache, { data: { addTask } }) {
             try {
@@ -82,6 +82,8 @@ const Task = () => {
         ? { backgroundColor: 'rgb(41, 41, 41)', color: 'white' }
         : { backgroundColor: 'rgb(41, 41, 41, 0.20)', color: 'black' }}>
         <h2>Did you...</h2>
+        {loading ? 
+        <div></div> :
         <TaskList
             tasks={tasks}
             deleteActive={deleteActive}
@@ -89,6 +91,7 @@ const Task = () => {
             updateTaskStatus={updateTaskStatus}
             updateTaskName={updateTaskName}
         />
+        }
         <div className={classes.taskButtons} >
             <button
                 onClick={addTaskHandler}
