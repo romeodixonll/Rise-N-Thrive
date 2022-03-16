@@ -1,7 +1,8 @@
 import Keyboard from "./Keyboard"
+import Modal from "./Modal"
 import classes from "./Yodel.module.css"
 import { ColorContext } from '../../../../store/color-context';
-import { useState, useEffect, useContext, useRef } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import words from './words.json';
 
 
@@ -14,10 +15,14 @@ const Yodel = () => {
     const [answer, setAnswer] = useState('MOPS');
     const [day, setDay] = useState(Date());
     const [winState, setWinState] = useState(false);
+    const [lossState, setLossState] = useState(false);
+    const [informationState, setInformationState] = useState(true);
     const [outcast, setOutcast] = useState([]);
     const [editing, setEditing] = useState(false);
 
     const [resultBox, setResultBox] = useState([]);
+    const [refreshKeys, setRefreshKeys] = useState(true)
+
 
     const handleKeyPress = (character) => {
         if(!winState){
@@ -73,6 +78,7 @@ const Yodel = () => {
         if(yodelCount === 4){
             setWinState(true);
         } else if(currentRow === 6){
+            setLossState(true);
             console.log(answer);
         } else if(yodelCount === 0 && echoCount === 0){
             // If all four letters are not included then put those letters into outcast array. These letters will have their keys darkened
@@ -89,8 +95,29 @@ const Yodel = () => {
         setAnswer(dailyWord);
     }
     
+    const refresh = () => {
+        setBoxCharacters([]);
+        setCurrentRow(0);
+        setCurrentBox(0);
+        setWinState(false);
+        setLossState(false);
+        setInformationState(false);
+        setOutcast([]);
+        setEditing(false);
+        setResultBox([]);
+        setRefreshKeys(true);
+        newWord();
+    }
+
+    const keyRefresh = () => {
+        setRefreshKeys(false);
+    }
+
+    const informationOff = () => {
+        setInformationState(false);
+    }
+
     useEffect(() => {
-        console.log(day);
         newWord();
     }, [day])
 
@@ -102,18 +129,24 @@ const Yodel = () => {
                         : { backgroundColor: `${textColor}99`, color: 'black' }}>
                     Yodel
                 </h1>
-                {/* This button allows the user to enter 'edit' mode... when clicked the button visually looks pressed */}
-                <button className={classes.edit} onClick={()=>{editing ? setEditing(false) : setEditing(true)}} style={editing 
-                            ? { backgroundColor:'#1cd31c', boxShadow: 'inset 2px 2px 8px #0d3810', content: 'Editing'}
-                            : { backgroundColor: 'darkgreen', boxShadow: 'none', content: 'Edit' }}>
 
-                        {/* If the user is editing change button text to match this */}
-                        {editing ? 'Editing' : 'Edit'}
-                </button>
+                <div className={classes.buttonDiv}>
+                    <button className={classes.information} onClick={() => setInformationState(true)} style={theme === "#393939" 
+                        ? { backgroundColor: `${textColor}52`, color: 'white' } 
+                        : { backgroundColor: `${textColor}99`, color: 'black' }}>
+                    ?
+                    </button>
+
+                    {/* This button allows the user to enter 'edit' mode... when clicked the button visually looks pressed */}
+                    <button className={classes.edit} onClick={()=>{editing ? setEditing(false) : setEditing(true)}} style={editing 
+                                ? { backgroundColor:'#1cd31c', boxShadow: 'inset 2px 2px 8px #0d3810', content: 'Editing'}
+                                : { backgroundColor: 'darkgreen', boxShadow: 'none', content: 'Edit' }}>
+
+                            {/* If the user is editing change button text to match this */}
+                            {editing ? 'Editing' : 'Edit'}
+                    </button>
+                </div>      
             </div>
-
-
-
 
             {/* Word Boxes */}
             <div className={classes.container} style={theme === "#393939"
@@ -148,7 +181,11 @@ const Yodel = () => {
                 ))}
             </div>
 
-            <Keyboard outcast={outcast} editing={editing} handleKeyPress={handleKeyPress}/>
+            <Keyboard outcast={outcast} editing={editing} handleKeyPress={handleKeyPress} keyRefresh={keyRefresh} refreshKeys={refreshKeys} />
+            
+            <button className={classes.refresh} onClick={refresh} style={(winState || lossState) ? {display: 'block'} : {display: 'none'}}>Play Again</button>
+
+            <Modal answer={answer} currentRow={currentRow} winState={winState} lossState={lossState} informationState={informationState} refresh={refresh} informationOff={informationOff}/>
         </div>
     )
 }

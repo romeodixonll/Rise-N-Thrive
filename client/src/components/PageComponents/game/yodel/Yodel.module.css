@@ -19,11 +19,21 @@
     margin-bottom: 1rem;
 }
 
-.edit{
+.buttonDiv{
     position: absolute;
-    font-size: 1rem;
     top: 30px;
     right: 5vw;
+}
+
+.information{
+    font-size: 1rem;
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+}
+
+.edit{
+    font-size: 1rem;
+    margin: 0.5rem;
     padding: 0.5rem 1rem;
     background-color: darkgreen;
 }
@@ -60,6 +70,7 @@
     flex-direction: row;
     gap:5px;
     margin-left: 0.75rem;
+    color: black;
 }
 
 .yodel{
@@ -88,4 +99,9 @@
     height: 60px;
     border: 2px solid #fbfdff;
     background: #8c8f92;
+}
+
+.refresh{
+    background-color: darkgreen;
+    font-size: 1.5rem;
 }
