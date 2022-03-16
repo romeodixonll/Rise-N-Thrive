@@ -4,7 +4,7 @@ import IndecisionApp from '../components/PageComponents/indecision/components/In
 import '../components/PageComponents/indecision/components/styles.css'
 const Indecision = () => {
     return (
-    <div className={`${classes.flex} page`} style={{ height: '94vh'}}>
+    <div className={`${classes.flex} page`} style={{ height: '94vh', width: '100%'}}>
         <IndecisionApp />
     </div>
 )}
