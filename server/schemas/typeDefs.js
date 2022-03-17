@@ -20,6 +20,11 @@ type Auth {
   user: User
 }
 
+type Options{
+  optionId: ID!
+  options:[String]
+}
+
 type Query {
   users: [User]
   user(username: String!): User
@@ -27,7 +32,13 @@ type Query {
   allTasks: User
 }
 
+input OptionInput{
+  options:[String]
+}
+
 type Mutation {
+  addOptions(optionsData: OptionInput):User
+  removeOptions(optionId: ID!):User
   addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
   login(email: String!, password: String!): Auth
   addTask(task:String!): Task

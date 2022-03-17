@@ -83,6 +83,31 @@ const resolvers = {
       )
       return userData
     },
+
+    addOptions:async(parent, {optionsData}, context)=>{
+      if(context.user){
+        const updatedUser = await User.findByIdAndUpdate(
+          {_id:context.user._id},
+          {$push:{savedOptions: optionsData}},
+          {new: true}
+        );
+        return updatedUser
+      }
+      throw new AuthenticationError('You need to be logged in')
+    },
+    removeOptions: async(parent, {optionId}, context)=>{
+      if(context.user){
+        const updatedUser = await User.findByIdAndUpdate(
+          {_id: context.user._id},
+          {$pull: {savedOptions:{optionId}}},
+          {new: true}
+        )
+        return updatedUser
+      }
+      throw new AuthenticationError('you need to be logged in')
+    }
+
+
   },
 };
 

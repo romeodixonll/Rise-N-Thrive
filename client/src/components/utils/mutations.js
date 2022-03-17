@@ -12,6 +12,33 @@ export const LOGIN_USER = gql`
   }
 `;
 
+export const SAVE_OPTIONS = gql`
+  mutation addOptions($optionsData: OptionInput){
+    addOptions(optionsData: $optionsData){
+      _id
+      savedOptions{
+        optionId
+        options
+      }
+    }
+  }
+
+`
+
+export const REMOVE_OPTIONS = gql`
+  mutation removeOptions($optionId: ID!){
+    removeOptions(optionId: $optionId){
+      _id
+      savedOptions{
+        optionId
+        options
+      }
+    }
+  }
+
+`
+
+
 
 export const ADD_USER = gql`
   mutation addUser(
