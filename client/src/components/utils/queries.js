@@ -23,3 +23,25 @@ query AllTasks {
 }
 `
 
+export const QUERY_STATS = gql`
+query allStats {
+  allStats {
+    stats {
+      _id
+      userId
+      highScore
+      guess1
+      guess2
+      guess3
+      guess4
+      guess5
+      guess6
+      guess7
+      guess8
+      averageTries
+      gamesPlayed
+    }
+  }
+}
+`
+

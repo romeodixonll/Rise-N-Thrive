@@ -38,6 +38,33 @@
     margin-top: 2rem;
 }
 
+/* User statistic Styling */
+.statSheet{
+    border-radius: 15px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.statistics{
+    display: flex;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.statTitle{
+    padding-right: 1rem;
+    text-align: right;
+    width: 33%;
+}
+
+.statBar{
+    /* width: 0%; */
+    text-align: left;
+    /* padding */
+    background-color: darkgreen;
+}
+
+/* Button Styling */
 .buttonDiv{
     display: flex;
 }

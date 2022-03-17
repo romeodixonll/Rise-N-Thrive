@@ -165,12 +165,32 @@ function updateScore(newScore){
     }
 }
 
-function displayModal(bool, newScore){
+const displayModal = async (bool, newScore) => {
     gameOn = !bool;
+
+    const changeText = () => {
+        switch(true){
+            case newScore <= 5:
+                console.log('hit')
+                return ' krill? Don\'t turn this into a career.';
+            case newScore <= 10:
+                return ' krill? I am Starving!';
+            case newScore <= 20:
+                return ' krill? That\'s just an appetizer!';
+            case newScore <= 30:
+                return ' krill? Okay that was a good amount.';
+            case newScore <= 50:
+                return ' krill? I think I\'m going into a food coma...';
+            case newScore <= 75:
+                return ' krill?!?! I\'M ABOUT TO EXPLODE!';
+            case newScore > 75:
+                return ' krill. Lil Penguin is no longer with us...';
+        }
+    }
 
     if(bool){
         modal.style.display = 'block';
-        hungerStatus.textContent = newScore + ' krill? I am Starving!'
+        hungerStatus.textContent = newScore + changeText();
     }
     else{
         modal.style.display = 'none';
