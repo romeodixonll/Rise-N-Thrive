@@ -4,8 +4,10 @@ import classes from "./Yodel.module.css"
 import { ColorContext } from '../../../../store/color-context';
 import { useState, useEffect, useContext } from 'react';
 import words from './words.json';
-
-
+import { useQuery } from '@apollo/client'
+import { useMutation } from '@apollo/client'
+import { QUERY_STATS } from "../../../utils/queries";
+import { UPDATE_TRIES } from "../../../utils/mutations";
 
 const Yodel = () => {
     const [textColor, , theme] = useContext(ColorContext);
@@ -22,6 +24,9 @@ const Yodel = () => {
 
     const [resultBox, setResultBox] = useState([]);
     const [refreshKeys, setRefreshKeys] = useState(true)
+
+    const { loading, data } = useQuery(QUERY_STATS);
+    const [updateTries] = useMutation(UPDATE_TRIES);
 
 
     const handleKeyPress = (character) => {
@@ -77,9 +82,10 @@ const Yodel = () => {
 
         if(yodelCount === 4){
             setWinState(true);
+            addResults(true, currentRow);
         } else if(currentRow === 6){
             setLossState(true);
-            console.log(answer);
+            addResults(false, currentRow);
         } else if(yodelCount === 0 && echoCount === 0){
             // If all four letters are not included then put those letters into outcast array. These letters will have their keys darkened
             inputArray.forEach(e => {
@@ -115,6 +121,67 @@ const Yodel = () => {
 
     const informationOff = () => {
         setInformationState(false);
+    }
+
+    const addResults = async (win, count) => {
+        let tries;
+
+        // If the play loses then it counts as taking 8 tries
+        if(win){
+            tries = count + 1;
+        } else{
+            tries = 8;
+        }
+
+        let try1 = data.allStats.stats[0].guess1;
+        let try2 = data.allStats.stats[0].guess2;
+        let try3 = data.allStats.stats[0].guess3;
+        let try4 = data.allStats.stats[0].guess4;
+        let try5 = data.allStats.stats[0].guess5;
+        let try6 = data.allStats.stats[0].guess6;
+        let try7 = data.allStats.stats[0].guess7;
+        let try8 = data.allStats.stats[0].guess8;
+
+        switch(tries){
+            case 1:
+                try1 = try1 + 1;
+                break;
+            case 2:
+                try2 = try2 + 1;
+                break;
+            case 3:
+                try3 = try3 + 1;
+                break;
+            case 4:
+                try4 = try4 + 1;
+                break;
+            case 5:
+                try5 = try5 + 1;
+                break;
+            case 6:
+                try6 = try6 + 1;
+                break;
+            case 7:
+                try7 = try7 + 1;
+                break;
+            case 8:
+                try8 = try8 + 1;
+                break;
+        }
+
+        let average = (try1 + try2*2 + try3*3 + try4*4 + try5*5 + try6*6 + try7*7 + try8*8)/(data.allStats.stats[0].gamesPlayed + 1);
+
+        try{
+            await updateTries({
+                variables: {
+                    tries: tries,
+                    average: average
+                }
+            });
+        }
+        catch (err){
+            console.log(err)
+        }
     }
 
     useEffect(() => {

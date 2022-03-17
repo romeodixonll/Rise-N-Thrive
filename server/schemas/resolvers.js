@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Task} = require("../models");
+const { User, Task, Stat} = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -11,21 +11,29 @@ const resolvers = {
       return User.findOne({ username });
     },
     me: async (parent, args, context) => {
-      console.log(context.user)
+      // console.log(context.user)
       if (context.user) {
         return User.findOne({ _id: context.user._id });
       }
       throw new AuthenticationError("You need to be logged in!");
     },
     allTasks: async (parent, args, context) => {
-      console.log(context.user)
+      // console.log(context.user)
       if (context.user) {
         let s =  await User.findById({_id: context.user._id}).populate('tasks')
         console.log(s)
         return s
       }
       throw new AuthenticationError("You need to be logged in!");
-    }
+    },
+    allStats: async (parent, args, context) => {
+      if (context.user) {
+        let s =  await User.findById({_id: context.user._id}).populate('stats')
+        console.log(s)
+        return s
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
   },
 
   Mutation: {
@@ -34,26 +42,39 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
+    addStat: async (parent, { highScore, guess1, guess2, guess3, guess4, guess5, guess6, guess7, guess8, averageTries, gamesPlayed}, context) => {
+      const stat = await Stat.create({
+        userId: context.user._id,
+        highScore: highScore,
+        guess1: guess1,
+        guess2: guess2,
+        guess3: guess3,
+        guess4: guess4,
+        guess5: guess5,
+        guess6: guess6,
+        guess7: guess7,
+        guess8: guess8,
+        averageTries: averageTries,
+        gamesPlayed: gamesPlayed
+      })
 
-      if (!user) {
-        throw new AuthenticationError("No user found with this email address");
-      }
-
-      const correctPw = await user.isCorrectPassword(password);
-
-      if (!correctPw) {
-        throw new AuthenticationError("Incorrect credentials");
-      }
-      console.log("-----------------")
-      console.log(user)
-      const token = signToken(user);
-
-      return { token, user };
+      const statData = await User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $addToSet: { stats: stat } },
+        { new: true }
+      )
+      return statData
+    },
+    updateTries: async (parent, {tries, average}, context) => {
+      const statData = await Stat.findOneAndUpdate(
+        { userId: context.user._id },
+        { $inc: { [`guess${tries}`]: 1, [`gamesPlayed`]: 1 }, $set: {averageTries: average} },
+        { new: true }
+      )
+      return statData
     },
     addTask: async (parent, args, context) => {
-
+      console.log("in addTask")
       const createTask = await Task.create({ taskItem: "Double Click to Edit" })
       const taskData = await User.findByIdAndUpdate(
         { _id: context.user._id },
@@ -84,6 +105,7 @@ const resolvers = {
       return userData
     },
 
+
     addOptions:async(parent, {optionsData}, context)=>{
       if(context.user){
         const updatedUser = await User.findByIdAndUpdate(
@@ -107,6 +129,26 @@ const resolvers = {
       throw new AuthenticationError('you need to be logged in')
     }
 
+
+
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+
+      if (!user) {
+        throw new AuthenticationError("No user found with this email address");
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new AuthenticationError("Incorrect credentials");
+      }
+      console.log("-----------------")
+      console.log(user)
+      const token = signToken(user);
+
+      return { token, user };
+    },
 
   },
 };
