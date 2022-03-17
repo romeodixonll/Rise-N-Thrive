@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/static/css/main.cf6c254b.css",
+    "main.js": "/static/js/main.105bf518.js",
+    "static/media/yodel.png": "/static/media/yodel.1fa04702264ca66c9e11.png",
+    "static/media/algorithm-black.png": "/static/media/algorithm-black.5576492585866fe9f773.png",
+    "static/media/algorithm-white.png": "/static/media/algorithm-white.2064b2eedf4ae5c304ba.png",
+    "static/media/algorithm-grey.png": "/static/media/algorithm-grey.0d183457a09b80ffe314.png",
+    "static/media/crypto-black.png": "/static/media/crypto-black.4e9c0d53b6339e6f9b0a.png",
+    "static/media/crypto-grey.png": "/static/media/crypto-grey.55dc111ce4dd616e0c92.png",
+    "static/media/crypto-white.png": "/static/media/crypto-white.c83352c5f1d14ceb59ff.png",
+    "static/media/settings-grey.png": "/static/media/settings-grey.0e5e676f4829f8e315c0.png",
+    "static/media/settings-white.png": "/static/media/settings-white.6f7fe0d02c629b88cccb.png",
+    "static/media/game-grey.png": "/static/media/game-grey.244eba78e14a37321e61.png",
+    "static/media/game-white.png": "/static/media/game-white.fef927d71ca3c1d06758.png",
+    "static/media/question-mark-grey.png": "/static/media/question-mark-grey.928f3b76831cc67700bf.png",
+    "static/media/home-grey.png": "/static/media/home-grey.3dc3bf99f3bd19996e38.png",
+    "static/media/home-white.png": "/static/media/home-white.c7e8887b3632f3b596f3.png",
+    "static/media/trashcan-white.png": "/static/media/trashcan-white.faba47f24c3f07af6188.png",
+    "static/media/game-black.png": "/static/media/game-black.0be3d5cbaccdffddffaa.png",
+    "static/media/arrow-black.png": "/static/media/arrow-black.6bd4d7b8973eda93290b.png",
+    "static/media/arrow-white.png": "/static/media/arrow-white.03cc53e54201ed11b7e9.png",
+    "static/media/settings-black.png": "/static/media/settings-black.fd9cb79a2028b66f67eb.png",
+    "static/media/penguin-game.png": "/static/media/penguin-game.cb58a98ec21eff6e915c.png",
+    "static/media/question-mark.png": "/static/media/question-mark.e99016679957740cc02d.png",
+    "index.html": "/index.html",
+    "main.cf6c254b.css.map": "/static/css/main.cf6c254b.css.map",
+    "main.105bf518.js.map": "/static/js/main.105bf518.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cf6c254b.css",
+    "static/js/main.105bf518.js"
+  ]
+}
