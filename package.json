@@ -16,6 +16,7 @@
     "concurrently": "^5.3.0"
   },
   "dependencies": {
+    "gapi-script": "^1.2.0",
     "http-proxy-middleware": "^2.0.4"
   }
 }
