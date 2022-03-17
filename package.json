@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "gapi-script": "^1.2.0",
-    "http-proxy-middleware": "^2.0.4",
-    "mongoose": "^5.9.10"
+    "http-proxy-middleware": "^2.0.4"
+    
   }
 }
