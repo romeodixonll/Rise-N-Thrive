@@ -127,7 +127,7 @@ const resolvers = {
         return updatedUser
       }
       throw new AuthenticationError('you need to be logged in')
-    }
+    },
 
 
 
