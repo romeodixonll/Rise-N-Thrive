@@ -2,6 +2,7 @@ const { Schema, model } = require("mongoose");
 const Task = require('./Task')
 const Stat = require('./Stat')
 const bcrypt = require("bcrypt");
+const optionsSchema = require("./options");
 
 const userSchema = new Schema({
   firstName: {
@@ -32,7 +33,10 @@ const userSchema = new Schema({
   stats: [{
     type: Schema.Types.ObjectId,
     ref: 'Stat'
-  }]
+  }],
+
+  savedOptions: [optionsSchema]
+
 });
 
 userSchema.pre("save", async function (next) {

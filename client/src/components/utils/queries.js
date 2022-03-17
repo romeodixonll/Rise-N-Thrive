@@ -7,6 +7,10 @@ export const QUERY_ME = gql`
       firstName
       lastName
       email
+      savedOptions{
+        optionId
+        options
+      }
     }
   }
 `;

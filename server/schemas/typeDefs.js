@@ -37,6 +37,11 @@ type Auth {
   user: User
 }
 
+type Options{
+  optionId: ID!
+  options:[String]
+}
+
 type Query {
   users: [User]
   user(username: String!): User
@@ -45,7 +50,13 @@ type Query {
   allStats: User
 }
 
+input OptionInput{
+  options:[String]
+}
+
 type Mutation {
+  addOptions(optionsData: OptionInput):User
+  removeOptions(optionId: ID!):User
   addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
   addStat(userId: String, highScore: Int, guess1: Int, guess2: Int, guess3: Int, guess4: Int,guess5: Int, guess6: Int, guess7: Int, guess8: Int, averageTries: Float, gamesPlayed: Int) : Stat
   updateTries(tries: Int, average: Float) : Stat

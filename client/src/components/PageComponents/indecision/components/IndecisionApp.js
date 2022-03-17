@@ -5,6 +5,8 @@ import Options from './Options';
 import Header from './Header';
 import Action from './Action';
 import OptionModal from './OptionModal';
+import { useQuery,useMutation } from '@apollo/client';
+import { QUERY_ME } from '../../../utils/queries';
 
 export default class IndecisionApp extends React.Component {
   state = {
@@ -68,10 +70,11 @@ export default class IndecisionApp extends React.Component {
   componentWillUnmount() {
     console.log('componentWillUnmount');
   }
-
+  
   render() {
     const subtitle = 'Put your life in the hands of a computer';
-
+    
+    console.log(this.options)
     return (
       <div className='box'>
         <Header subtitle={subtitle} />
