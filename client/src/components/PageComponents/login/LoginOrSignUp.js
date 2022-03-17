@@ -12,15 +12,17 @@ import { useMutation } from "@apollo/client";
 import Auth from "../../utils/auth";
 import { ADD_USER } from "../../utils/mutations";
 import { LOGIN_USER } from "../../utils/mutations";
+import { ADD_STAT } from "../../utils/mutations";
 
 function LoginOrSignUp(props) {
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [addUser] = useMutation(ADD_USER);
+  const [addStat] = useMutation(ADD_STAT);
   const [login, { error }] = useMutation(LOGIN_USER);
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    console.log(formState);
+    // console.log(formState);
     try {
       if (
         formState.email &&
@@ -28,18 +30,35 @@ function LoginOrSignUp(props) {
         formState.firstName &&
         formState.lastName
       ) {
-         
+ 
         const mutationResponse = await addUser({
           variables: {
             email: formState.email,
             password: formState.password,
             firstName: formState.firstName,
-            lastName: formState.lastName,
+            lastName: formState.lastName
           },
         });
-        console.log(mutationResponse);
+
         const token = mutationResponse.data.addUser.token;
         Auth.login(token);
+        
+        await addStat({
+          variables: {
+            highScore: 0,
+            guess1: 0,
+            guess2: 0,
+            guess3: 0,
+            guess4: 0,
+            guess5: 0,
+            guess6: 0,
+            guess7: 0,
+            guess8: 0,
+            averageTries: 0,
+            gamesPlayed: 0
+          },
+        });
+
       } else {
           
         const mutationResponse = await login({
@@ -55,7 +74,7 @@ function LoginOrSignUp(props) {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(formState);
+    // console.log(formState);
     setFormState({
       ...formState,
       [name]: value,

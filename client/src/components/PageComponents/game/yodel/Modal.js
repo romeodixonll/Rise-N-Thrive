@@ -1,6 +1,10 @@
 import classes from './Modal.module.css'
 import { ColorContext } from '../../../../store/color-context';
 import { useState, useEffect, useContext } from 'react';
+import { useQuery } from '@apollo/client'
+import { QUERY_STATS } from "../../../utils/queries";
+
+// Images
 import echo2 from '../../../../assets/images/game-images/yodel/echo2.png'
 import yodel2 from '../../../../assets/images/game-images/yodel/yodel2.png'
 import echoYodel from '../../../../assets/images/game-images/yodel/echo-yodel.png'
@@ -25,7 +29,46 @@ let modalInfo = modalTypes[0];
 const Modal = ({ answer, currentRow, winState, lossState, informationState, refresh, informationOff}) => {
     const [textColor, , theme] = useContext(ColorContext);
     const [modalOff, setModalOff] = useState(false);
+    const [width1, setWidth1] = useState(0);
+    const [width2, setWidth2] = useState(0);
+    const [width3, setWidth3] = useState(0);
+    const [width4, setWidth4] = useState(0);
+    const [width5, setWidth5] = useState(0);
+    const [width6, setWidth6] = useState(0);
+    const [width7, setWidth7] = useState(0);
+    const [width8, setWidth8] = useState(0);
 
+    const { loading, data } = useQuery(QUERY_STATS);
+
+    useEffect(() => {
+        if(!loading){
+            let statData = data.allStats.stats[0];
+            let dataArray = [statData.guess1, statData.guess2, statData.guess3, statData.guess4, statData.guess5, statData.guess6, statData.guess7, statData.guess8]
+            let greatest = Math.max(...dataArray);
+            let data1 = dataArray[0]*66/greatest;
+            let data2 = dataArray[1]*66/greatest;
+            let data3 = dataArray[2]*66/greatest;
+            let data4 = dataArray[3]*66/greatest;
+            let data5 = dataArray[4]*66/greatest;
+            let data6 = dataArray[5]*66/greatest;
+            let data7 = dataArray[6]*66/greatest;
+            let data8 = dataArray[7]*66/greatest;
+
+            if(greatest !== 0){
+                setWidth1(data1);
+                setWidth2(data2);
+                setWidth3(data3);
+                setWidth4(data4);
+                setWidth5(data5);
+                setWidth6(data6);
+                setWidth7(data7);
+                setWidth8(data8);
+            }
+        } else{
+            console.log('Loading Data...')
+        }
+
+    })
 
     if(winState || lossState){
         if(winState){
@@ -54,17 +97,51 @@ const Modal = ({ answer, currentRow, winState, lossState, informationState, refr
                         <h3 className={classes.dialog}>{modalInfo.dialog} {winState ? `${currentRow} tries!` : `` }</h3>
                         
                         {/* Possible User History... */}
-                        <div>
+                        <div className={classes.statSheet} style={theme === "#393939" 
+                        ? { backgroundColor: `${textColor}52`, color: 'white' } 
+                        : { backgroundColor: `${textColor}99`, color: 'black' }}>
 
+                            <div className={classes.statistics}>
+                                <h3 className={classes.statTitle}>1 Guess: </h3>
+                                <div className={classes.statBar} style={{width: `${width1}%`}}>{data.allStats.stats[0].guess1}</div>
+                            </div>
+                            <div className={classes.statistics}>
+                                <h3 className={classes.statTitle}>2 Guess: </h3>
+                                <div className={classes.statBar} style={{width: `${width2}%`}}>{data.allStats.stats[0].guess2}</div>
+                            </div>
+                            <div className={classes.statistics}>
+                                <h3 className={classes.statTitle}>3 Guess: </h3>
+                                <div className={classes.statBar} style={{width: `${width3}%`}}>{data.allStats.stats[0].guess3}</div>
+                            </div>
+                            <div className={classes.statistics}>
+                                <h3 className={classes.statTitle}>4 Guess: </h3>
+                                <div className={classes.statBar} style={{width: `${width4}%`}}>{data.allStats.stats[0].guess4}</div>
+                            </div>
+                            <div className={classes.statistics}>
+                                <h3 className={classes.statTitle}>5 Guess: </h3>
+                                <div className={classes.statBar} style={{width: `${width5}%`}}>{data.allStats.stats[0].guess5}</div>
+                            </div>
+                            <div className={classes.statistics}>
+                                <h3 className={classes.statTitle}>6 Guess: </h3>
+                                <div className={classes.statBar} style={{width: `${width6}%`}}>{data.allStats.stats[0].guess6}</div>
+                            </div>
+                            <div className={classes.statistics}>
+                                <h3 className={classes.statTitle}>7 Guess: </h3>
+                                <div className={classes.statBar} style={{width: `${width7}%`}}> {data.allStats.stats[0].guess7}</div>
+                            </div>
+                            <div className={classes.statistics}>
+                                <h3 className={classes.statTitle}>Losses: </h3>
+                                <div className={classes.statBar} style={{width: `${width8}%`}}> {data.allStats.stats[0].guess8}</div>
+                            </div>
                         </div>
                         {/* ------------------------ */}
 
                         <div className={classes.buttonDiv}>
-                            <div className={classes.button}>
-                                <button type="button" style={{backgroundColor: 'darkgreen', fontSize: '1.25rem'}} onClick={refresh}>Play Again</button>
+                            <div className={classes.playButton}>
+                                <button className={classes.button} type="button" style={{backgroundColor: 'darkgreen', fontSize: '1.25rem'}} onClick={refresh}>Play Again</button>
                             </div>
-                            <div className={classes.button}>
-                                <button type="button" style={{backgroundColor: '#ecf00c', fontSize: '1.25rem'}} onClick={() => setModalOff(true)}>Results</button>
+                            <div className={classes.playButton}>
+                                <button className={classes.button} type="button" style={{backgroundColor: '#ecf00c', fontSize: '1.25rem'}} onClick={() => setModalOff(true)}>Results</button>
                             </div>
                         </div>
                     </div>

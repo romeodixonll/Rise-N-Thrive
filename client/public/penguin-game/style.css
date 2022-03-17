@@ -11,8 +11,14 @@ body{
 button{
     background-color: var(--blue);
     border-radius: 15px;
+    font-size: 1.25rem;
+    padding: 0.5rem;
     border: none;
     margin: auto;
+}
+
+.buttonDiv{
+    width: 100%;
 }
 
 #game-header{
@@ -44,14 +50,16 @@ button{
 }
 
 #modal{
+    width: 32rem;
     display: block;
     background-color: var(--dark);
     padding: 0.75rem 1rem;
     border-radius: 15px;
     position: absolute;
     text-align: center;
-    top: 25%;
-    left: 15%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -35%);
     box-shadow:black 4px 4px 10px;
 }
 
@@ -59,4 +67,12 @@ button{
     background-color: var(--gray);
     border-radius: 15px;
     padding: 0.25rem 1rem;
+}
+
+h1{
+    font-size: 2rem;
+}
+
+h3{
+    font-size: 1.5rem;
 }
