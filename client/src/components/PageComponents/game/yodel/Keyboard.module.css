@@ -23,6 +23,8 @@
     text-transform: uppercase;
 }
 
-/* .test{
-background-color: rgb(216, 84, 75);
-} */
+@media screen and (max-width: 500px) {
+    .button{
+        padding: 1.1rem;
+    }
+}

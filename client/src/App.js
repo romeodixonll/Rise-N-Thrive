@@ -73,7 +73,7 @@ function App() {
           <Nav />
           <Route
             render={({ location }) => (
-              <TransitionGroup style={{ position: "relative", flexGrow: 1 }}>
+              <TransitionGroup className={classes.component} style={{ position: "relative", flexGrow: 1 }}>
                 <CSSTransition
                   key={location.key}
                   timeout={1000}

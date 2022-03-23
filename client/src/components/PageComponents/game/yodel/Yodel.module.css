@@ -116,3 +116,45 @@
     font-size: 1.5rem;
 }
 
+@media screen and (max-width: 500px) {
+    .scene{
+        width: 100%;
+        padding: 0;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%);
+    }
+
+    .title{
+        margin-top: 1rem;
+    }
+
+    .head{
+        margin: 0;
+    }
+
+    .container{
+        width: 319px;
+        padding: 0.5rem;
+    }
+
+    .buttonDiv{
+        top: 10px;
+    }
+
+    .box{
+        width: 45px;
+        height: 45px;
+    }
+
+    .echo{
+        width: 45px;
+        height: 45px;
+    }
+
+    .yodel{
+        width: 45px;
+        height: 45px;
+    }
+
+}
