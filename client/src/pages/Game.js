@@ -4,7 +4,7 @@ import GameList from '../components/PageComponents/game/GameList'
 
 const Game = () => {
     return (
-    <div className={`${classes.flex} page`} style={{ height: '94vh'}}>
+    <div className={`${classes.flex} page`}>
         <GameList />
     </div>
 )}
